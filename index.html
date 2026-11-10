@@ -1,0 +1,109 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Blood Cell Dispatch</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f8f5ed;color:#2d2429;font:16px/1.55 "DM Sans",Arial,sans-serif}header,main,footer{max-width:1080px;margin:auto;padding:20px 28px}header,footer,.line{display:flex;align-items:center;justify-content:space-between;gap:12px}header{border-bottom:1px solid #d7d1c8}button{font:inherit;cursor:pointer;color:inherit}nav button,footer button{background:none;border:0;text-decoration:underline;text-underline-offset:4px}.brand{font-weight:bold}.brand b{color:#a82646;margin-right:8px}main{padding-top:32px}.eyebrow,small{font: bold 12px/1.5 ui-monospace,monospace;letter-spacing:.09em;text-transform:uppercase}.eyebrow{color:#98304b}h1,h2,h3{font-family:Georgia,serif;line-height:1.08;margin:8px 0 14px}h1{font-size:clamp(42px,6vw,74px);letter-spacing:-.055em}h2{font-size:clamp(26px,4vw,42px)}h3{font-size:23px}p{margin:8px 0 18px}.case{display:grid;grid-template-columns:1.05fr 1fr;border:1px solid #cdc3b9;border-radius:18px;overflow:hidden;background:#fffdf8}.brief{padding:clamp(20px,4vw,46px);align-self:center}.scope{background:#310f25;position:relative;min-height:230px;display:grid;place-items:center}.scope canvas{width:100%;height:auto;display:block}.scope small{position:absolute;bottom:12px;left:18px;color:#fddfe6;background:#310f25cf;padding:2px 7px}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.choice{background:#fffdf8;border:1px solid #c9c1b9;border-radius:12px;padding:14px;display:flex;align-items:center;gap:12px;text-align:left;font-weight:bold}.choice:hover:enabled,.choice:focus-visible{background:#f4e8e6;border-color:#8c2644}.choice canvas{width:58px;height:58px}.choice:disabled{cursor:default;opacity:.55}.choice.correct{border:2px solid #29725a;opacity:1}.line{margin:22px 0 12px}.line h3{margin:0}.feed{margin-top:15px;border-left:4px solid #953153;padding:12px 18px;background:#f3e8e5}.feed p{margin:4px 0}.next{border:0;background:#84203d;color:white;border-radius:8px;padding:10px 20px;font-weight:700;margin:10px 0}.score{font-size:14px}.refs{font-size:14px;color:#67525e}dialog{width:min(490px,90%);border:1px solid #b6a7a6;background:#fffdf8;border-radius:16px;padding:28px}dialog::backdrop{background:#2b142ab3}footer{margin-top:26px;border-top:1px solid #d7d1c8;font-size:13px}button:focus-visible{outline:3px solid #138078;outline-offset:3px}@media(max-width:680px){header,main,footer{padding:16px}.case{grid-template-columns:1fr}.scope{min-height:0}.scope canvas{max-height:180px;object-fit:cover}.choices{grid-template-columns:1fr}.choice{padding:6px 14px}.choice canvas{height:40px;width:40px}.brand{font-size:14px}}
+body{background:#101e26;color:#edf4ea;background-image:linear-gradient(#81b6bc09 1px,transparent 1px),linear-gradient(90deg,#81b6bc09 1px,transparent 1px);background-size:28px 28px}header,footer{border-color:#345159}.brand b,.eyebrow{color:#7ed6bb}nav button,footer button{color:#c3dfd5}.case,.choice,dialog,.bridge{background:#182d36;color:#edf4ea;border-color:#405e64}.choice:hover:enabled,.choice:focus-visible{background:#29474d;border-color:#81d5bf}.next{background:#f2c676;color:#202b2d}.bridge{border:1px solid #42666b;border-radius:18px;overflow:hidden;display:grid;grid-template-columns:.9fr 1.5fr}.orders,.portrait{padding:clamp(22px,4vw,46px)}.orders small,.win small{color:#8ee1bc}.portrait{background:radial-gradient(ellipse,#315661,#152b36 80%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}.portrait canvas{width:min(100%,248px);image-rendering:pixelated;animation:float 4s ease-in-out infinite}.portrait small{color:#bad2c6}.feed{background:#243741;border-color:#f3bb7b}.win{border-color:#88d8b5;background:#183b35}.loss{background:#3a2d31}.loss small{color:#ffc6a4}.refs{color:#c2cec9}.feed h3{margin-top:5px}.choice.correct{border-color:#83d8b0}.case,.bridge,.win,.loss{animation:reveal .32s ease-out}.scope{background:#301829}.scope canvas{object-fit:contain}.scope small{background:#261826;color:#f5d5ce}.score{color:#b8d6ca}h1{font-family:Georgia,serif}dialog{border-color:#49666f}@keyframes reveal{from{opacity:.45;transform:translateY(5px)}to{opacity:1;transform:none}}@keyframes float{50%{transform:translateY(-4px)}}@media(max-width:680px){.bridge{grid-template-columns:1fr}.portrait{padding:12px}.portrait canvas{width:150px}}@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head><body><header><span class="brand"><b>✚</b> Blood Cell Dispatch</span><nav><button id="rules">How to play</button><button id="sources">Sources</button></nav></header><main><div class="eyebrow">Dispatch command &nbsp; / &nbsp; A&amp;P 10</div><h1>Blood Cell Dispatch</h1><p>Seven missions inside the bloodstream. You command the crew.</p><section id="game"></section></main><footer><span>Blood lab · Chapter 10</span><button id="download">Save offline game ↓</button></footer><dialog id="info"><div id="detail"></div><button class="next" onclick="info.close()">Close</button></dialog>
+<script>
+const cells=[
+['Platelets','Cell fragments stick to a damaged vessel and to one another, forming a temporary plug.',22],
+['Erythrocyte','Hemoglobin in a red blood cell binds oxygen for delivery to tissues.',8],
+['Neutrophil','This early responder engulfs microbes during an acute infection.',16],
+['Eosinophil','Its granules release enzymes that damage parasitic worms.',17],
+['Basophil','It releases histamine, which helps drive inflammation.',18],
+['Lymphocyte','B and T lymphocytes carry out targeted immune responses. Activated B cells can become antibody-secreting plasma cells.',19],
+['Monocyte','A circulating monocyte can enter tissue and develop into a macrophage that engulfs microbes and debris.',20]];
+const cases=[
+['A scraped knee','A cyclist scrapes a knee. A tiny vessel tears, and blood seeps out. Which component can quickly plug the break?',[1,0,2],0,'Look for small fragments that can stick together.','Vessel wall injury'],
+['Bacteria at the wound','Bacteria enter the scrape. Which white blood cell rushes to the site early in this acute infection and engulfs them?',[2,3,1],2,'The early responder you need is a phagocyte with a multilobed nucleus.','Bacteria near the wound'],
+['The uphill sprint','The cyclist is back on the bike. Working leg muscles need more oxygen. Which cell transports it from the lungs?',[4,6,1],1,'Look for the cell packed with hemoglobin.','Oxygen delivery'],
+['An oversized invader','A parasitic worm is too large for a white blood cell to swallow. Which cell can release enzymes onto its surface?',[2,3,0],3,'The defender has a two-lobed nucleus and red-orange granules.','Parasitic worm'],
+['The histamine signal','After pollen exposure, an inflammatory response begins. Which circulating white blood cell can release histamine?',[4,1,3],4,'Look for the cell whose large, dark granules store histamine.','Allergen exposure'],
+['A targeted response','The body needs antibodies that recognize a particular virus. Which cell group includes B cells that can mature into antibody-producing plasma cells?',[6,0,5],5,'B cells and T cells belong to the same family.','Viral particles'],
+['Cleanup crew','Damaged tissue contains cell debris. Which circulating cell can leave the blood and become a macrophage to engulf it?',[6,2,4],6,'Look for a large cell with a kidney-shaped nucleus.','Tissue debris']];
+const palette=['#d998dc','#eb5a68','#d7bded','#f4b58e','#a18ace','#a8c4eb','#c4d8c8'];
+function oval(c,x,y,a,b,color,angle=0){c.beginPath();c.ellipse(x,y,a,b,angle,0,Math.PI*2);c.fillStyle=color;c.fill()}
+function cell(c,id,x,y,r,angle=0){c.save();c.translate(x,y);c.rotate(angle);if(id===0){for(const [a,b] of [[-.35,-.25],[.3,.1],[-.2,.45]]){oval(c,a*r,b*r,r*.36,r*.23,palette[id],a);oval(c,a*r,b*r,r*.15,r*.11,'#934d9b')}}else if(id===1){oval(c,0,0,r,r*.70,'#a82f50');oval(c,0,-.09*r,r*.94,r*.63,'#fb777a');oval(c,0,-.07*r,r*.56,r*.31,'#bf3e58');oval(c,0,.02*r,r*.37,r*.14,'#da5666')}else{oval(c,0,0,r,r*.97,palette[id]);if(id===6){oval(c,0,0,r*.58,r*.66,'#644979');oval(c,r*.4,-r*.1,r*.38,r*.32,palette[id])}else if(id===5){oval(c,-r*.1,-r*.08,r*.77,r*.74,'#504475')}else{const n=id===2?3:2;for(let j=0;j<n;j++){let a=j*2*Math.PI/n;oval(c,r*.35*Math.cos(a),r*.33*Math.sin(a),r*.34,r*.37,'#633967')}for(let j=0;j<(id===4?55:id===3?35:11);j++){let a=j*2.4,d=r*.88*Math.sqrt((j+.5)/(id===4?55:id===3?35:11));oval(c,d*Math.cos(a),d*Math.sin(a),r*.065,r*.06,id===3?'#bf5845':'#765184')}}}c.restore()}
+const outcomes = [
+ ['Bleeding contained','The platelets gather at the tear and seal it with a temporary plug.','Blood is still escaping through the tear.'],
+ ['Bacteria intercepted','The neutrophil surrounds and engulfs a bacterium.','The bacteria remain active at the wound.'],
+ ['Oxygen delivered','Oxygen leaves hemoglobin and reaches the working muscle.','The muscle is still waiting for its oxygen delivery.'],
+ ['Parasite hit','Enzymes released by the eosinophil damage the worm’s surface.','The worm remains active in the tissue.'],
+ ['Signal released','Histamine spreads from the basophil, helping start the inflammatory response.','The requested histamine signal is still missing.'],
+ ['Antibodies deployed','Over time, an activated B cell develops into a plasma cell. Its antibodies bind the virus.','The virus still lacks the requested antibodies.'],
+ ['Debris cleared','In the tissue, the monocyte develops into a macrophage and engulfs debris.','Debris remains at the injury site.']
+];
+let frame=0;
+let timer=0;
+let busy=false;
+const minimal=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function stopScene(){cancelAnimationFrame(frame);clearTimeout(timer)}
+function paintScene(canvas,round,unit=null,right=false){
+ stopScene();
+ const c=canvas.getContext('2d'),start=performance.now();
+ function draw(now){
+  const t=minimal?3:(now-start)/1000;
+  const arrival=unit===null?0:Math.min(1,t/0.85);
+  const effect=right?Math.min(1,Math.max(0,(t-.85)/.95)):0;
+  const failed=unit!==null&&!right&&arrival===1;
+  const bg=c.createLinearGradient(0,0,0,270);bg.addColorStop(0,'#20152c');bg.addColorStop(.55,'#66344d');bg.addColorStop(1,'#29172e');c.fillStyle=bg;c.fillRect(0,0,500,270);
+  for(let j=0;j<65;j++){const x=(j*79+t*12)%510;oval(c,x,(j*41)%257,1.4,1,'#e6c0d34a')}
+  for(let j=0;j<12;j++){const x=(j*113+t*(10+j%5))%550-25,y=30+(j*53)%190;if(Math.abs(x-300)>65||Math.abs(y-135)>63)cell(c,1,x,y,10+j%8,j*.6+t*.05)}
+  const x=306,y=125;
+  c.save();c.translate(x,y);
+  if(round===0){
+   for(let j=-6;j<=6;j++)if(j!==0)oval(c,j*15,35+Math.abs(j)*2,10,6,'#efa49c',j*.045);
+   if(effect<.95)for(let j=0;j<4;j++)cell(c,1,Math.sin(j)*7,42+(t*(failed?75:42)+j*20)%85,5,1);
+   for(let j=0;j<effect*8;j++)cell(c,0,(j%4)*6-9,34-Math.floor(j/4)*6,9,j);
+  }else if(round===3){
+   c.strokeStyle=effect>.7?'#ac8296':'#e6b09a';c.lineWidth=10;c.lineCap='round';c.beginPath();for(let j=-40;j<=40;j++){const dy=Math.sin(j/14+t*(failed?5:3))*11*(1-effect*.8);if(j===-40)c.moveTo(j,dy);else c.lineTo(j,dy)}c.stroke();
+  }else if(round===2){for(let j=0;j<4;j++)oval(c,12+j*5,-20+j*13,33,5,effect>.4?'#fd9980':'#956574',-.25)}
+  else if(round===4){for(let j=0;j<6;j++)oval(c,Math.cos(j)*15,Math.sin(j)*16,8,7,'#d3a359')}
+  else{
+   const count=round===1?(failed?7:4):5;
+   for(let j=0;j<count;j++){if((round===1||round===6)&&j<effect*count)continue;
+    const a=j*2.4+t*.24;const dx=Math.cos(a)*(12+j*5),dy=Math.sin(a)*(12+j*4);
+    oval(c,dx,dy,round===1?9:6,round===1?3.8:6,round===1?'#9cd4ad':round===5?'#a4bddc':'#d29ab4',a);
+    if(round===5&&effect>.3){c.strokeStyle='#ffe18a';c.lineWidth=2;c.beginPath();c.moveTo(dx-11,dy-11);c.lineTo(dx-6,dy-6);c.lineTo(dx-5,dy-12);c.moveTo(dx-6,dy-6);c.lineTo(dx-1,dy-6);c.stroke()}
+   }
+  }
+  if(unit!==null){
+   const dx=-290+(right?265:390)*arrival,dy=(round===0?28:0)-15*Math.sin(arrival*Math.PI);
+   cell(c,unit,dx,dy,round===6?19+effect*8:20,-.19);
+   if(effect>0&&[2,3,4].includes(round))for(let j=0;j<16;j++){let f=(t*.9+j/16)%1;oval(c,dx+f*(round===4?85:45),dy+Math.sin(j*1.7)*f*42,2.5,2.5,round===2?'#92ecff':round===4?'#ffc379':'#c9ef9a')}
+  }
+  c.restore();
+  c.strokeStyle=failed?'#ed9779':'#a4d5c5';c.lineWidth=1;
+  for(const [a,b,sx,sy] of [[235,62,1,1],[377,62,-1,1],[235,195,1,-1],[377,195,-1,-1]]){c.beginPath();c.moveTo(a+sx*13,b);c.lineTo(a,b);c.lineTo(a,b+sy*12);c.stroke()}
+  if(!minimal)frame=requestAnimationFrame(draw);
+ }
+ draw(start)
+}
+function captain(canvas){
+ const c=canvas.getContext('2d');
+ // Original pixel portrait on the captain's bridge.
+ const p=5;function tile(x,y,w,h,color){c.fillStyle=color;c.fillRect(x*p,y*p,w*p,h*p)}
+ const rows=[
+ '          gggggggg          ','        ggccccccccgg        ','       gccchhhhhhcccg       ','       gccccyyccccccg       ','      gggggggggggggggg      ','        gggggggggggg        ','        ddssssssssdd        ','       ddslllsslllsdd       ','       ddswdsllsdwsdd       ','        dslllsslllsd        ','         slllsstlls         ','         sslttttlls         ','          slllllls          ','        ccgssllssgcc        ','     ccccccgssssccecccc     ','   cceeecccchhhhcccceecc    ','  cccccccccchyyhccccccccc   ',' cccccccccccchhccccccccccc  ',' cccggccccccchhccccccggccc  '];
+ const colors={g:'#102b37',c:'#37868c',h:'#cce7d9',y:'#f1c768',d:'#44353b',s:'#be8065',l:'#edb899',t:'#975e52',w:'#f4e9ce',e:'#e5b565'};
+ rows.forEach((row,y)=>[...row].forEach((s,x)=>{if(colors[s])tile(x,y,1,1,colors[s])}));
+}
+function bridge(){
+ stopScene();game.innerHTML='<section class="bridge"><div class="portrait"><canvas id="capt" width="140" height="100" aria-label="Pixel-art dispatch captain"></canvas><small>Command deck</small></div><div class="orders"><small>Incoming transmission</small><h2>Captain, take the helm.</h2><p>A cyclist has just scraped a knee. Your crew is on standby. Read the distress call, then send the blood component that can help.</p><button class="next" id="launch">Accept command ▸</button></div></section>';captain(capt);launch.onclick=show;
+}
+let index=0,score=0,tried=new Set(),done=false;const misses=new Set();
+function show(){busy=false;const [title,brief,options,target,hint,label]=cases[index];game.innerHTML='<div class="case"><div class="brief"><div class="eyebrow">Case '+(index+1)+' / '+cases.length+'</div><h2>'+title+'</h2><p>'+brief+'</p></div><div class="scope"><canvas id="field" width="500" height="270" aria-hidden="true"></canvas><small id="caption"></small></div></div><div class="line"><h3>Dispatch a component</h3><span class="score">Score <b id="points">'+score+'</b> / 7</span></div><div class="choices"></div><div id="feedback" aria-live="polite"></div>';caption.textContent=label;paintScene(field,index);for(const id of options){const btn=document.createElement('button');btn.className='choice';btn.innerHTML='<canvas aria-hidden="true" width="96" height="96"></canvas><span>'+cells[id][0]+'</span>';cell(btn.firstChild.getContext('2d'),id,48,48,35,-.2);btn.onclick=()=>choose(id,btn);game.querySelector('.choices').append(btn)}}
+function choose(id,btn){if(done||busy||tried.has(id))return;busy=true;tried.add(id);const target=cases[index][3];const right=id===target;paintScene(field,index,id,right);game.querySelectorAll('.choice').forEach(b=>b.disabled=true);caption.textContent='Dispatching '+cells[id][0]+'…';feedback.innerHTML='<div class="feed">Crew en route…</div>';
+timer=setTimeout(()=>{
+ busy=false;
+ if(right){done=true;if(tried.size===1)score++;points.textContent=score;btn.classList.add('correct')}
+ else{misses.add(index);[...game.querySelectorAll('.choice')].forEach((b,j)=>b.disabled=tried.has(cases[index][2][j]))}
+ caption.textContent=right?outcomes[index][0]:'Backup requested';
+ feedback.innerHTML='<div class="feed '+(right?'win':'loss')+'"><small>'+(right?'✦ Mission complete':'⚠ Dispatch missed')+'</small><h3>'+(right?outcomes[index][0]:'Backup requested')+'</h3><p>'+(right?outcomes[index][1]:outcomes[index][2]+' '+cells[id][1]+' '+cases[index][4])+'</p><span class="refs">Reed, slide '+cells[id][2]+' · Marieb &amp; Keller, § '+(id===0?'10.2a':'10.1d')+'</span></div>';
+ if(right){const b=document.createElement('button');b.className='next';b.textContent=index===6?'See results →':'Next case →';feedback.append(b);b.onclick=()=>{if(index===6)finish();else{index++;tried.clear();done=false;show();game.querySelector('.choice').focus()}};b.focus()}else{game.querySelector('.choice:not(:disabled)')?.focus()}},minimal?0:1600)}
+function finish(){stopScene();game.innerHTML='<div class="brief"><div class="eyebrow">Shift complete</div><h2>'+score+' of 7 on the first try</h2><p>You dispatched the right component in all seven cases.</p>'+(misses.size?'<h3>Cases to revisit</h3><ul>'+[...misses].map(i=>'<li>'+cases[i][0]+' — '+cells[cases[i][3]][0]+'</li>').join('')+'</ul>':'')+'<button class="next" id="again">Play again</button></div>';again.onclick=()=>{index=score=0;tried.clear();misses.clear();done=false;bridge()};again.focus()}
+function modal(html){detail.innerHTML=html;info.showModal()}
+rules.onclick=()=>modal('<h2>How to play</h2><p>Read the case and select one of three components. A correct first dispatch earns one point. If a dispatch misses, use the clue and try again. Complete seven cases to see your score and review list.</p>');
+sources.onclick=()=>modal('<h2>References</h2><p>Marieb, E. N., &amp; Keller, S. M. (2022). <i>Essentials of human anatomy &amp; physiology</i> (13th ed.). Pearson. Chapter 10, sections 10.1d and 10.2a.</p><p>Reed, B. (2025). <i>Chapter 10: Blood</i> [Lecture slides]. Tulsa Community College. Slides 8, 10, 16–20, and 22–23.</p>');
+const standalone='<!doctype html>'+document.documentElement.outerHTML;
+download.onclick=()=>{const url=URL.createObjectURL(new Blob([standalone],{type:'text/html'}));const a=document.createElement('a');a.href=url;a.download='Blood-Cell-Dispatch.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+bridge();
+</script></body></html>
