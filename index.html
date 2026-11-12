@@ -1,41 +1,1526 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Blood Cell Dispatch</title><style>
-*{box-sizing:border-box}body{margin:0;background:#f8f5ed;color:#2d2429;font:16px/1.55 "DM Sans",Arial,sans-serif}header,main,footer{max-width:1080px;margin:auto;padding:20px 28px}header,footer,.line{display:flex;align-items:center;justify-content:space-between;gap:12px}header{border-bottom:1px solid #d7d1c8}button{font:inherit;cursor:pointer;color:inherit}nav button,footer button{background:none;border:0;text-decoration:underline;text-underline-offset:4px}.brand{font-weight:bold}.brand b{color:#a82646;margin-right:8px}main{padding-top:32px}.eyebrow,small{font: bold 12px/1.5 ui-monospace,monospace;letter-spacing:.09em;text-transform:uppercase}.eyebrow{color:#98304b}h1,h2,h3{font-family:Georgia,serif;line-height:1.08;margin:8px 0 14px}h1{font-size:clamp(42px,6vw,74px);letter-spacing:-.055em}h2{font-size:clamp(26px,4vw,42px)}h3{font-size:23px}p{margin:8px 0 18px}.case{display:grid;grid-template-columns:1.05fr 1fr;border:1px solid #cdc3b9;border-radius:18px;overflow:hidden;background:#fffdf8}.brief{padding:clamp(20px,4vw,46px);align-self:center}.scope{background:#310f25;position:relative;min-height:230px;display:grid;place-items:center}.scope canvas{width:100%;height:auto;display:block}.scope small{position:absolute;bottom:12px;left:18px;color:#fddfe6;background:#310f25cf;padding:2px 7px}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.choice{background:#fffdf8;border:1px solid #c9c1b9;border-radius:12px;padding:14px;display:flex;align-items:center;gap:12px;text-align:left;font-weight:bold}.choice:hover:enabled,.choice:focus-visible{background:#f4e8e6;border-color:#8c2644}.choice canvas{width:58px;height:58px}.choice:disabled{cursor:default;opacity:.55}.choice.correct{border:2px solid #29725a;opacity:1}.line{margin:22px 0 12px}.line h3{margin:0}.feed{margin-top:15px;border-left:4px solid #953153;padding:12px 18px;background:#f3e8e5}.feed p{margin:4px 0}.next{border:0;background:#84203d;color:white;border-radius:8px;padding:10px 20px;font-weight:700;margin:10px 0}.score{font-size:14px}.refs{font-size:14px;color:#67525e}dialog{width:min(490px,90%);border:1px solid #b6a7a6;background:#fffdf8;border-radius:16px;padding:28px}dialog::backdrop{background:#2b142ab3}footer{margin-top:26px;border-top:1px solid #d7d1c8;font-size:13px}button:focus-visible{outline:3px solid #138078;outline-offset:3px}@media(max-width:680px){header,main,footer{padding:16px}.case{grid-template-columns:1fr}.scope{min-height:0}.scope canvas{max-height:180px;object-fit:cover}.choices{grid-template-columns:1fr}.choice{padding:6px 14px}.choice canvas{height:40px;width:40px}.brand{font-size:14px}}
-body{background:#101e26;color:#edf4ea;background-image:linear-gradient(#81b6bc09 1px,transparent 1px),linear-gradient(90deg,#81b6bc09 1px,transparent 1px);background-size:28px 28px}header,footer{border-color:#345159}.brand b,.eyebrow{color:#7ed6bb}nav button,footer button{color:#c3dfd5}.case,.choice,dialog,.bridge{background:#182d36;color:#edf4ea;border-color:#405e64}.choice:hover:enabled,.choice:focus-visible{background:#29474d;border-color:#81d5bf}.next{background:#f2c676;color:#202b2d}.bridge{border:1px solid #42666b;border-radius:18px;overflow:hidden;display:grid;grid-template-columns:.9fr 1.5fr}.orders,.portrait{padding:clamp(22px,4vw,46px)}.orders small,.win small{color:#8ee1bc}.portrait{background:radial-gradient(ellipse,#315661,#152b36 80%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}.portrait canvas{width:min(100%,248px);image-rendering:pixelated;animation:float 4s ease-in-out infinite}.portrait small{color:#bad2c6}.feed{background:#243741;border-color:#f3bb7b}.win{border-color:#88d8b5;background:#183b35}.loss{background:#3a2d31}.loss small{color:#ffc6a4}.refs{color:#c2cec9}.feed h3{margin-top:5px}.choice.correct{border-color:#83d8b0}.case,.bridge,.win,.loss{animation:reveal .32s ease-out}.scope{background:#301829}.scope canvas{object-fit:contain}.scope small{background:#261826;color:#f5d5ce}.score{color:#b8d6ca}h1{font-family:Georgia,serif}dialog{border-color:#49666f}@keyframes reveal{from{opacity:.45;transform:translateY(5px)}to{opacity:1;transform:none}}@keyframes float{50%{transform:translateY(-4px)}}@media(max-width:680px){.bridge{grid-template-columns:1fr}.portrait{padding:12px}.portrait canvas{width:150px}}@media(prefers-reduced-motion:reduce){*{animation:none!important}}
-</style></head><body><header><span class="brand"><b>✚</b> Blood Cell Dispatch</span><nav><button id="rules">How to play</button><button id="sources">Sources</button></nav></header><main><div class="eyebrow">Dispatch command &nbsp; / &nbsp; A&amp;P 10</div><h1>Blood Cell Dispatch</h1><p>Seven missions inside the bloodstream. You command the crew.</p><section id="game"></section></main><footer><span>Blood lab · Chapter 10</span><button id="download">Save offline game ↓</button></footer><dialog id="info"><div id="detail"></div><button class="next" onclick="info.close()">Close</button></dialog>
+<!doctype html><html lang="en"><head><script data-bard-client-injected="true">(function(firebaseConfig, initialAuthToken, appId) {
+        window.__firebase_config = firebaseConfig;
+        window.__initial_auth_token = initialAuthToken;
+        window.__app_id = appId;
+            })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","eyJhbGciOiJSUzI1NiIsImtpZCI6IjExNjRiNzdiNDMzZDdhMDAyMWI4NjE4YjhjYTU3ZTMyZGI5MWUxMTMiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1mYnN2Y0BiYXJkLWZyb250ZW5kLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiaHR0cHM6Ly9pZGVudGl0eXRvb2xraXQuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJ1aWQiOiIxNzYyNzI1MjAyMjk3NDY5MjE5NCIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLWZic3ZjQGJhcmQtZnJvbnRlbmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJjbGFpbXMiOnsiYXBwSWQiOiJjXzVhMDg4Zjc3NjNkNDY2MzRfOTU4ZjQ5ZmRfaW5kZXguaHRtbC11bmRlZmluZWQifSwiZXhwIjoxNzk0NTE1NzE4LCJpYXQiOjE3OTQ1MTIxMTgsImFsZyI6IlJTMjU2In0.b6ANFkYQVyW4XVWzvqsQq0558VSyT2BPsvd1J0V_aBr-DbARsgoy50EEIAYeJ3mzVyNfRcFW7pWvU4Bg92pBVoJyH54bS8b9jy0fxeb4ijoRTsO538L5Fpzz-3GHNee_sCVDpiwhVWeiR11dC4pLLfPr0NoE-EBWo5hwHu5WV-eU1dO8mt9Iwsct9rbVZ0z-1AwFB6BOubPxqsIBJoiSCTgbtCZ74X-WM7rZdK1jRbVTVtPNMFwjEmD_33nK-59yLbFJYa-Qnhda9giwu1Oqo1m0zBp-viACxRkSHRhGj8WfilVCiBDoTuafgohN5SZhHeBJMk8tUooxC8UqwK5xfw","c_5a088f7763d46634_958f49fd_index.html-undefined")</script><script data-bard-client-injected="true">
+  document.addEventListener('input', (event) => {
+    if (event.target && (event.target.isContentEditable || event.target.hasAttribute('contenteditable'))) {
+      const clonedDoc = document.cloneNode(true);
+      const injectedScripts = clonedDoc.querySelectorAll('[data-bard-client-injected="true"]');
+      injectedScripts.forEach(el => el.remove());
+      window.parent.postMessage({
+        type: 'inlineEdit',
+        html: '<!DOCTYPE html>\n' + clonedDoc.documentElement.outerHTML
+      }, '*');
+    }
+  });
+</script><script data-bard-client-injected="true">(function(){'use strict';window.addEventListener("message",a=>{a.data&&a.data.type==="SUPPLEMENTAL_DATA_UPDATE"&&window.dispatchEvent(new CustomEvent("supplementaldataupdate",{detail:a.data.data}))});}).call(this);
+</script><script data-bard-client-injected="true">(function() {
+  const SCROLL_KEYS = new Set([
+    'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight',
+    ' ', 'Spacebar', 'PageUp', 'PageDown', 'Home', 'End',
+  ]);
+  const HORIZONTAL_KEYS = new Set(['ArrowLeft', 'ArrowRight']);
+
+  function isTextEntryTarget(target) {
+    if (!target) return false;
+    const tagName = target.tagName;
+    return tagName === 'INPUT' || tagName === 'TEXTAREA' ||
+        tagName === 'SELECT' || target.isContentEditable === true;
+  }
+
+  // An element absorbs the key only if it both overflows on the axis being
+  // scrolled and is configured to scroll on that axis. The cheap dimension
+  // test runs first because getComputedStyle forces a style recalc, and this
+  // runs on every keypress. Each axis is read from its own longhand: the
+  // 'overflow' shorthand serializes as two values when the axes differ, which
+  // is the common 'overflow-x: hidden; overflow-y: auto' pane.
+  function canScroll(node, horizontal) {
+    const overflows = horizontal ? node.scrollWidth > node.clientWidth
+                                 : node.scrollHeight > node.clientHeight;
+    if (!overflows) return false;
+    const style = window.getComputedStyle(node);
+    const overflow = horizontal ? style.overflowX : style.overflowY;
+    return overflow === 'auto' || overflow === 'scroll';
+  }
+
+  // Walks up from the event target so nested scrollers keep their behavior.
+  // <body> is included because pages that pin the root height make it the
+  // scroll container.
+  function hasScrollableAncestor(target, horizontal) {
+    let node = target;
+    while (node && node !== document.documentElement) {
+      if (canScroll(node, horizontal)) return true;
+      node = node.parentElement;
+    }
+    return false;
+  }
+
+  function rootCanScroll(horizontal) {
+    const scroller = document.scrollingElement || document.documentElement;
+    if (!scroller) return false;
+    // Tolerate a pixel of rounding so subpixel layouts do not look scrollable.
+    return horizontal ? scroller.scrollWidth > window.innerWidth + 1
+                      : scroller.scrollHeight > window.innerHeight + 1;
+  }
+
+  window.addEventListener('keydown', function(event) {
+    if (!SCROLL_KEYS.has(event.key)) return;
+    if (event.defaultPrevented) return;
+    // Alt and Meta turn arrows into browser history navigation, and Ctrl is
+    // reserved for shortcuts, so none of them are scroll intent.
+    if (event.altKey || event.metaKey || event.ctrlKey) return;
+
+    const target = event.target;
+    if (isTextEntryTarget(target)) return;
+
+    // Anything that can still absorb the scroll gets to keep it.
+    const horizontal = HORIZONTAL_KEYS.has(event.key);
+    if (rootCanScroll(horizontal)) return;
+    if (hasScrollableAncestor(target, horizontal)) return;
+
+    event.preventDefault();
+  }, {capture: true, passive: false});
+})();</script><script data-bard-client-injected="true">(function() {
+  // Ensure this script is executed only once
+  if (window.firebaseAuthBridgeScriptLoaded) {
+    return;
+  }
+  window.firebaseAuthBridgeScriptLoaded = true;
+
+  let nextTokenPromiseId = 0;
+
+  // Stores { resolve, reject } for ongoing token requests
+  const pendingTokenPromises = {};
+
+  // Listen for messages from the Host Application
+  window.addEventListener('message', function(event) {
+
+    const messageData = event.data;
+
+  if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+      const { success, token, error, promiseId } = messageData ?? {};
+      if (pendingTokenPromises[promiseId]) {
+        if (success) {
+          pendingTokenPromises[promiseId].resolve(token);
+        } else {
+          pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+        }
+        delete pendingTokenPromises[promiseId];
+      }
+    }
+  });
+
+  // Expose a function for the Generated App to request a new Firebase token
+  window.requestNewFirebaseToken = function() {
+    const currentPromiseId = nextTokenPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingTokenPromises[currentPromiseId] = { resolve, reject };
+    });
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'REQUEST_NEW_FIREBASE_TOKEN',
+        promiseId: currentPromiseId
+      }, '*');
+    } else {
+      pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+      delete pendingTokenPromises[currentPromiseId];
+    }
+    return promise;
+  };
+})();</script><script data-bard-client-injected="true">
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+  if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+    try {
+      Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+        get: function() {
+          return undefined; // Or throw an error
+        },
+        configurable: false
+      });
+    } catch (error) {
+      console.error("Error defining prototype getter:", error);
+    }
+  }
+})();
+
+(function() {
+  const pendingMediaResolvers = {};
+  let nextMediaPromiseId = 0;
+
+  function requestMediaPermissions(constraints) {
+    const mediaPromiseId = nextMediaPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingMediaResolvers[mediaPromiseId] = (granted) => {
+        delete pendingMediaResolvers[mediaPromiseId];
+        resolve(granted);
+      };
+    });
+
+    window.parent.postMessage({
+      type: 'requestMediaPermission',
+      constraints: constraints,
+      promiseId: mediaPromiseId,
+    }, '*');
+
+    return promise;
+  }
+
+  let originalGetUserMedia = realOriginalGetUserMedia;
+
+  function interceptGetUserMedia() {
+    if (navigator.mediaDevices) {
+      Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+        value: function(constraints) {
+          return requestMediaPermissions(constraints).then((granted) => {
+            if (granted) {
+              if (originalGetUserMedia) {
+                return originalGetUserMedia(constraints);
+              } else {
+                throw new Error("Original getUserMedia not available.");
+              }
+            } else {
+              throw new DOMException('Permission denied', 'NotAllowedError');
+            }
+          });
+        },
+        writable: false,
+        configurable: false
+      });
+    }
+  }
+
+  interceptGetUserMedia();
+
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'childList' && mutation.addedNodes) {
+        mutation.addedNodes.forEach(node => {
+          if (node === navigator.mediaDevices) {
+            interceptGetUserMedia();
+          }
+        });
+      }
+    }
+  });
+
+  function interceptSpeechRecognition() {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+      return;
+    }
+
+    const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const SpeechRecognitionWrapper = function(...args) {
+      const recognizer = new OriginalSpeechRecognition(...args);
+      const originalStart = recognizer.start.bind(recognizer);
+
+      recognizer.start = function() {
+        requestMediaPermissions({ audio: true }).then(granted => {
+          if (granted) {
+            originalStart();
+          } else {
+            const errorEvent = new SpeechRecognitionErrorEvent('error');
+            errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+            recognizer.dispatchEvent(errorEvent);
+          }
+        });
+      };
+
+      return recognizer;
+    };
+
+    SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+    SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+    if (window.SpeechRecognition) {
+      window.SpeechRecognition = SpeechRecognitionWrapper;
+    }
+    if (window.webkitSpeechRecognition) {
+      window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+    }
+  }
+
+  interceptSpeechRecognition();
+
+  window.addEventListener('message', function(event) {
+    if (event.data) {
+      if (event.data.type === 'resolveMediaPermission') {
+        const { promiseId, granted } = event.data;
+        if (pendingMediaResolvers[promiseId]) {
+          pendingMediaResolvers[promiseId](granted);
+        }
+      }
+    }
+  });
+
+})();</script><script ws-interception-config="{&quot;parentOrigin&quot;:&quot;https://gemini.google.com&quot;,&quot;proxiedDomains&quot;:[]}" data-bard-client-injected="true">(function(){'use strict';var u=typeof Object.defineProperties=="function"?Object.defineProperty:function(b,d,e){if(b==Array.prototype||b==Object.prototype)return b;b[d]=e.value;return b};function v(b){b=["object"==typeof globalThis&&globalThis,b,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var d=0;d<b.length;++d){var e=b[d];if(e&&e.Math==Math)return e}throw Error("Cannot find global object");}var w=v(this);
+function y(b,d){if(d)a:{var e=w;b=b.split(".");for(var h=0;h<b.length-1;h++){var k=b[h];if(!(k in e))break a;e=e[k]}b=b[b.length-1];h=e[b];d=d(h);d!=h&&d!=null&&u(e,b,{configurable:!0,writable:!0,value:d})}}function z(b){function d(h){return b.next(h)}function e(h){return b.throw(h)}return new Promise(function(h,k){function m(n){n.done?h(n.value):Promise.resolve(n.value).then(d,e).then(m,k)}m(b.next())})}y("globalThis",function(b){return b||w});/*
+
+ Copyright The Closure Library Authors.
+ SPDX-License-Identifier: Apache-2.0
+*/
+function A(b,d){function e(){}e.prototype=d.prototype;b.j=d.prototype;b.prototype=new e;b.prototype.constructor=b;b.h=function(h,k,m){for(var n=Array(arguments.length-2),p=2;p<arguments.length;p++)n[p-2]=arguments[p];return d.prototype[k].apply(h,n)}};function B(b,d,e="*"){function h(a){if(typeof a==="string")return F.encode(a).buffer;if(a instanceof ArrayBuffer)return a.slice(0);if(ArrayBuffer.isView(a))return a.buffer.slice(a.byteOffset,a.byteOffset+a.byteLength);throw Error("Invalid data type");}function k(a){a=h(a);var f={type:"send",data:new Uint8Array(a)},g;(g=r)==null||g.postMessage(f,[a])}function m(){if(!r)throw Error("Data port not captured yet.");r.onmessage=a=>{if(a.data.type==="message"){a=new MessageEvent("message",{data:G.decode(a.data.data)});
+let f;(f=c.onmessage)==null||f.call(c,a);c.dispatchEvent(a)}}}function n(){if(!t)throw Error("Control port not captured yet.");t.onmessage=a=>{switch(a.data.type){case "open":l=1;var f=new Event("open"),g;(g=c.onopen)==null||g.call(c,f);c.dispatchEvent(f);q.forEach(H=>{k(H)});q=[];break;case "close":g=a.data;l=3;g=new CloseEvent("close",{code:g.code,reason:g.reason,wasClean:g.wasClean});(f=c.onclose)==null||f.call(c,g);c.dispatchEvent(g);break;case "error":l=3;f=new Event("error");let x;(x=c.onerror)==
+null||x.call(c,f);c.dispatchEvent(f)}}}function p(a){return z(function*(){var f=new MessageChannel;t=f.port1;var g=new MessageChannel;r=g.port1;n();m();window.parent.postMessage({type:"websocket_open",portOrdering:["control","data"],url:b,protocols:a||[],connectionId:I},e,[f.port2,g.port2])}())}var c=Reflect.construct(EventTarget,[],new.target);c.CONNECTING=0;c.OPEN=1;c.CLOSING=2;c.CLOSED=3;c.url=b;c.binaryType="arraybuffer";c.protocol="";c.i="";var l=0,t=null,r=null,q=[],F=new TextEncoder,G=new TextDecoder;
+c.onopen=null;c.onmessage=null;c.onclose=null;c.onerror=null;Object.defineProperty(c,"readyState",{get:()=>l,enumerable:!0,configurable:!0});Object.defineProperty(c,"bufferedAmount",{get:()=>{var a=0;q.forEach(f=>{a+=typeof f==="string"?f.length:f.byteLength});return a},enumerable:!0,configurable:!0});var I=function(){var a;return((a=globalThis.crypto)==null?0:a.randomUUID)?globalThis.crypto.randomUUID():"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,f=>{var g=Math.random()*16|0;return(f===
+"x"?g:g&3|8).toString(16)})}();c.send=a=>{if(l===1)a instanceof Blob?a.arrayBuffer().then(f=>{k(f)}):k(a);else if(l===0)if(typeof a==="string")q.push(a);else if(a instanceof ArrayBuffer||ArrayBuffer.isView(a))q.push(h(a));else throw Error("Sending Blob is not supported before the connection is open.");else console.debug("WebSocket send called in CLOSING or CLOSED state; ignored.")};c.close=(a=1E3,f="")=>{if(l!==2&&l!==3){l=2;a={type:"close",code:a,reason:f,wasClean:a===1E3};var g;(g=t)==null||g.postMessage(a)}};
+Promise.resolve().then(()=>p(d));return c}A(B,EventTarget);var C=document.currentScript,D=C==null?void 0:C.getAttribute("ws-interception-config");if(!D)throw Error("WebSocket Interceptor: Missing ws-interception-config attribute in the script tag.");var E=JSON.parse(D);if(!E.parentOrigin||typeof E.parentOrigin!=="string")throw Error("WebSocket Interceptor: Invalid parentOrigin in ws-interception-config");
+(function(b){var d=Object.getOwnPropertyDescriptor(window,"WebSocket");if(!d||d.writable||d.configurable)d=Object.assign(function(e,h){try{let k=(new URL(e)).hostname;if(b.proxiedDomains.some(m=>k===m||k.endsWith(`.${m}`)))return new B(e,h,b.parentOrigin)}catch(k){throw window.parent.postMessage({type:"websocket_blocked",url:e,reason:"blocked_invalid_url"},b.parentOrigin),new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");}window.parent.postMessage({type:"websocket_blocked",
+url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");},{CONNECTING:0,OPEN:1,CLOSING:2,CLOSED:3}),Object.defineProperty(window,"WebSocket",{value:d,writable:!1,configurable:!1})})({proxiedDomains:E.proxiedDomains||[],parentOrigin:E.parentOrigin});}).call(this);
+</script><script data-bard-client-injected="true">((function(modelInformation) {
+  const originalFetch = window.fetch;
+  // TODO: b/421908508 - Move these out of the script and match all generative AI model calls.
+  let googleLlmBaseApiUrls = [
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageTransformModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent',
+  ];
+  modelInformation.deprecatedTextModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+    );
+  });
+  modelInformation.deprecatedImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predict',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predictLongRunning',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+  modelInformation.deprecatedGenerateImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+  modelInformation.deprecatedImageTransformModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+
+  const pendingFetchResolvers = {};
+  let nextPromiseId = 0;
+
+  function handleStringInput(input, optionsArgument) {
+    const actualUrl = input;
+    const fetchCallArgs = [actualUrl, optionsArgument];
+    const effectiveOptions = optionsArgument || {};
+    const bodyForApiKeyCheck = effectiveOptions.body;
+    const bodyForPostMessage = effectiveOptions.body;
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  function handleRequestInput(input, optionsArgument) {
+    const actualUrl = input.url;
+    const fetchCallArgs = [input, optionsArgument];
+    const effectiveOptions = { method: input.method, headers: new Headers(input.headers) };
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (optionsArgument) {
+      if (optionsArgument.method) effectiveOptions.method = optionsArgument.method;
+      if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers);
+      if ('body' in optionsArgument) {
+        bodyForApiKeyCheck = optionsArgument.body;
+        bodyForPostMessage = optionsArgument.body;
+      } else {
+        bodyForApiKeyCheck = undefined;
+        bodyForPostMessage = input.body;
+      }
+    } else {
+      bodyForApiKeyCheck = undefined;
+      bodyForPostMessage = input.body;
+    }
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  window.fetch = function(input, optionsArgument) {
+    let actualUrl;
+    let fetchCallArgs;
+    let effectiveOptions = {};
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (typeof input === 'string') {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument));
+    } else if (input instanceof Request) {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument));
+    } else {
+      return originalFetch.apply(window, [input, optionsArgument]);
+    }
+
+    effectiveOptions.method = effectiveOptions.method || 'GET';
+    if (!effectiveOptions.headers) {
+      effectiveOptions.headers = new Headers();
+    }
+
+
+    if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) {
+      let apiKeyIsNull = true;
+
+      const regex = new RegExp("models/([^:]+)");
+      const modelNameMatch = actualUrl.match(regex);
+      const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified';
+
+
+      try {
+        const urlObject = new URL(actualUrl);  // Use URL object for robust parsing
+        const apiKeyParam = urlObject.searchParams.get('key');
+        if (apiKeyParam) {
+          apiKeyIsNull = false;
+        }
+      } catch (e) {
+        // Continue checks even if URL parsing fails
+      }
+
+      if (apiKeyIsNull && effectiveOptions.headers) {
+        const h = new Headers(effectiveOptions.headers);
+        const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key');
+        if (apiKeyHeaderValue) {
+          apiKeyIsNull = false;
+          return originalFetch.apply(window, fetchCallArgs);
+        }
+      }
+
+      if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') {
+        try {
+          const bodyData = JSON.parse(bodyForApiKeyCheck);
+          if (bodyData && bodyData.apiKey) {
+            apiKeyIsNull = false;
+            return originalFetch.apply(window, fetchCallArgs);
+          }
+        } catch (e) {
+          // Ignore JSON parsing errors
+        }
+      }
+
+      if(apiKeyIsNull) {
+        const promiseId = nextPromiseId++;
+        const promise = new Promise((resolve) => {
+          pendingFetchResolvers[promiseId] = (resolvedResponse) => {
+            delete pendingFetchResolvers[promiseId];
+            resolve(resolvedResponse);
+          };
+        });
+
+        let serializedBodyForPostMessage;
+        if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) {
+            serializedBodyForPostMessage = bodyForPostMessage;
+        } else if (bodyForPostMessage instanceof ReadableStream) {
+            serializedBodyForPostMessage = null;
+        } else {
+            try {
+                serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage);
+            } catch (e) {
+                serializedBodyForPostMessage = null;
+            }
+        }
+
+        const messageOptions = {
+            method: effectiveOptions.method,
+            headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()),
+            body: serializedBodyForPostMessage
+        };
+
+        window.parent.postMessage({
+          type: 'requestFetch',
+          url: actualUrl,
+          modelName: modelName,
+          options: messageOptions,
+          promiseId: promiseId,
+        }, '*');
+
+        return promise;
+      }
+      return originalFetch.apply(window, fetchCallArgs);
+    }
+    return originalFetch.apply(window, fetchCallArgs);
+  };
+
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.type === 'resolveFetch') {
+      const { promiseId, response } = event.data;
+      if (pendingFetchResolvers[promiseId]) {
+        try {
+          const reconstructedResponse = new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: new Headers(response.headers),
+          });
+          pendingFetchResolvers[promiseId](reconstructedResponse);
+        } catch (error) {
+          pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" }));
+        }
+      }
+    }
+  });
+
+}))({"textModelName":"gemini-3-flash-preview","imageModelName":"imagen-4.0-generate-001","imageEditModelName":"gemini-3.1-flash-image","imageTransformModelName":"gemini-3-pro-image","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash","gemini-2.5-flash-preview-04-17","gemini-2.5-flash-preview-05-20","gemini-2.5-flash-preview-09-2025"],"deprecatedImageModelNames":["imagen-3.0-generate-001","imagen-3.0-generate-002"],"deprecatedGenerateImageModelNames":["gemini-2.5-flash-image-preview","gemini-2.5-flash-image","gemini-3.1-flash-image-preview"],"deprecatedImageTransformModelNames":["gemini-3-pro-image-preview-11-2025"]})</script><script data-bard-client-injected="true">(function() {
+  function normalizeSlug(str) {
+    try {
+      return str
+        .trim()
+        .toLowerCase()
+        .replace(/[^p{L}p{N}s_-]/gu, '')
+        .replace(/s+/g, '-');
+    } catch (e) {
+      return str
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9s_-]/g, '')
+        .replace(/s+/g, '-');
+    }
+  }
+
+  function findTargetElement(hash) {
+    if (!hash || hash === '#') {
+      return null;
+    }
+    const rawId = hash.startsWith('#') ? hash.slice(1) : hash;
+    let decodedId = rawId;
+    try {
+      decodedId = decodeURIComponent(rawId);
+    } catch (e) {
+      // Ignore URI malformed errors.
+    }
+
+    // 1. Direct ID match (raw and decoded).
+    let target = document.getElementById(rawId) || document.getElementById(decodedId);
+    if (target) {
+      return target;
+    }
+
+    // 2. Name attribute match (<a name="...">).
+    try {
+      if (typeof CSS !== 'undefined' && CSS.escape) {
+        target =
+          document.querySelector('[name="' + CSS.escape(rawId) + '"]') ||
+          document.querySelector('[name="' + CSS.escape(decodedId) + '"]');
+      } else {
+        const namedElements = document.getElementsByName(rawId);
+        if (namedElements && namedElements.length > 0) {
+          return namedElements[0];
+        }
+      }
+    } catch (e) {
+      // Ignore querySelector syntax errors.
+    }
+    if (target) {
+      return target;
+    }
+
+    // 3. Match heading text by slug (for Markdown TOCs where headings lack explicit IDs).
+    const targetSlug = normalizeSlug(decodedId);
+    if (targetSlug) {
+      for (const heading of document.querySelectorAll('h1, h2, h3, h4, h5, h6')) {
+        if (normalizeSlug(heading.textContent || '') === targetSlug) {
+          return heading;
+        }
+      }
+    }
+
+    return null;
+  }
+
+  document.addEventListener('click', function(event) {
+    const target = event.target;
+    const anchor = target && typeof target.closest === 'function' ? target.closest('a') : null;
+    if (!anchor) {
+      return;
+    }
+
+    const href = anchor.getAttribute('href');
+    if (
+      !href ||
+      href.trim().toLowerCase().startsWith('javascript:') ||
+      anchor.hasAttribute('download')
+    ) {
+      return;
+    }
+
+    // Check if the link is an in-page hash / anchor link.
+    if (href.startsWith('#')) {
+      event.preventDefault();
+      const targetElement = findTargetElement(href);
+      if (targetElement) {
+        targetElement.scrollIntoView({behavior: 'smooth', block: 'start'});
+      }
+      return;
+    }
+
+    // Check if the URL has the same origin/pathname but with a hash.
+    try {
+      const url = new URL(anchor.href, window.location.href);
+      if (
+        url.hash &&
+        url.origin === window.location.origin &&
+        url.pathname === window.location.pathname
+      ) {
+        event.preventDefault();
+        const targetElement = findTargetElement(url.hash);
+        if (targetElement) {
+          targetElement.scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+        return;
+      }
+    } catch (e) {
+      // Fall through if URL parsing fails.
+    }
+
+    // For all external or full navigation links, prevent iframe-level navigation
+    // (which breaks in AGSA WebView or sandboxed iframes) and ensure they open
+    // safely in a new tab/window.
+    if (anchor.target !== '_blank') {
+      event.preventDefault();
+      window.open(anchor.href, '_blank', 'noopener,noreferrer');
+    }
+  }, {capture: true});
+})();</script><script data-bard-client-injected="true">(function(){'use strict';function a(){window.parent.postMessage({type:"interaction"},"*")}window.addEventListener("click",a,{capture:!0,passive:!0});window.addEventListener("touchstart",a,{capture:!0,passive:!0});window.addEventListener("keydown",a,{capture:!0,passive:!0});}).call(this);
+</script><script data-bard-client-injected="true">(function() {
+  const originalConsoleLog = console.log;
+  const originalConsoleError = console.error;
+
+    /**
+   * Normalizes an error event or a promise rejection reason into a structured error object.
+   * @param {*} errorEventOrReason The error object or reason.
+   * @return {object} Structured error data { message, name, stack }.
+   */
+  function getErrorObject(errorEventOrReason) {
+    if (errorEventOrReason instanceof Error) {
+      return {
+        message: errorEventOrReason.message,
+        name: errorEventOrReason.name,
+        stack: errorEventOrReason.stack,
+      };
+    }
+    // Fallback for non-Error objects.
+    try {
+      return {
+        message: JSON.stringify(errorEventOrReason),
+        name: 'UnknownErrorType',
+        stack: null,
+      };
+    } catch (e) {
+      return {
+        message: String(errorEventOrReason),
+        name: 'UnknownErrorTypeNonStringifiable',
+        stack: null,
+      };
+    }
+  }
+
+  /**
+   * Converts an array of arguments (from log/error) into a single string.
+   * Handles Error objects specially to include their message and stack.
+   * @param {Array<*>} args - Arguments passed to console methods.
+   * @return {string} A string representation of the arguments.
+   */
+  function stringifyArgs(args) {
+    return args
+      .map((arg) => {
+        if (arg instanceof Error) {
+          const {message, stack} = arg;
+          return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+        }
+        if (typeof arg === 'object' && arg !== null) {
+          try {
+            return JSON.stringify(arg);
+          } catch (error) {
+            return '[Circular Object]';
+          }
+        } else {
+          return String(arg);
+        }
+      })
+      .join(' ');
+  }
+
+  console.log = function(...args) {
+    const logString = stringifyArgs(args);
+    window.parent.postMessage({ type: 'log', message: logString }, '*');
+    originalConsoleLog.apply(console, args);
+  };
+
+  console.error = function(...args) {
+    let errorData;
+    if (args.length > 0 && args[0] instanceof Error) {
+      const err = args[0];
+      // If the first arg is an Error, capture its details.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        ...getErrorObject(err),
+        rawArgsString: stringifyArgs(args.slice(1)),
+        timestamp: new Date().toISOString(),
+      };
+    } else {
+      // If not an Error object, treat all args as a general error message.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        message: stringifyArgs(args),
+        name: 'ConsoleLoggedError',
+        stack: null,
+        timestamp: new Date().toISOString(),
+      };
+    }
+    window.parent.postMessage(errorData, '*');
+    originalConsoleError.apply(console, args);
+  };
+
+  // Listen for global unhandled synchronous errors.
+  window.addEventListener('error', function(event) {
+    const errorDetails = event.error ? getErrorObject(event.error) : {
+      message: event.message,
+      name: 'GlobalError',
+      stack: null,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+    };
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'global',
+      ...errorDetails,
+      message: errorDetails.message || event.message,
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+  // Listen for unhandled promise rejections (asynchronous errors).
+  window.addEventListener('unhandledrejection', function(event) {
+    const errorDetails = getErrorObject(event.reason);
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'unhandledrejection',
+      ...errorDetails,
+      message: errorDetails.message || 'Unhandled Promise Rejection',
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+})();</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blood Cell Dispatch</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101e26;color:#edf4ea;font:16px/1.55 "DM Sans",Arial,sans-serif;background-image:linear-gradient(#81b6bc09 1px,transparent 1px),linear-gradient(90deg,#81b6bc09 1px,transparent 1px);background-size:28px 28px;transition:background-color .2s,color .2s}
+body.light{background:#f8f5ed;color:#2d2429;background-image:linear-gradient(#98304b08 1px,transparent 1px),linear-gradient(90deg,#98304b08 1px,transparent 1px)}
+header,main,footer{max-width:1080px;margin:auto;padding:20px 28px}
+header,footer,.line,.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+header{border-bottom:1px solid #345159}
+body.light header,body.light footer{border-color:#d7d1c8}
+button{font:inherit;cursor:pointer;color:inherit}
+nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+nav button,footer button{background:none;border:0;text-decoration:underline;text-underline-offset:4px;color:#c3dfd5;padding:4px 2px}
+body.light nav button,body.light footer button{color:#67525e}
+.pill-toggle{border:1px solid #405e64;background:#182d36;color:#c3dfd5;border-radius:999px;padding:4px 11px;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.pill-toggle[aria-pressed="true"]{border-color:#81d5bf;background:#24434b;color:#fff}
+body.light .pill-toggle{border-color:#cdc3b9;background:#fffdf8;color:#2d2429}
+body.light .pill-toggle[aria-pressed="true"]{border-color:#8c2644;background:#f4e8e6;color:#84203d}
+.brand{font-weight:bold;background:none;border:0;padding:0;text-decoration:none}
+.brand b{color:#7ed6bb;margin-right:8px}
+body.light .brand b{color:#a82646}
+main{padding-top:28px}
+.eyebrow,small{font:bold 12px/1.5 ui-monospace,monospace;letter-spacing:.09em;text-transform:uppercase}
+.eyebrow{color:#7ed6bb}
+body.light .eyebrow{color:#98304b}
+h1,h2,h3{font-family:Georgia,serif;line-height:1.08;margin:8px 0 14px}
+h1{font-size:clamp(38px,5.5vw,68px);letter-spacing:-.05em}
+h2{font-size:clamp(25px,3.8vw,40px)}
+h3{font-size:22px}
+p{margin:8px 0 16px}
+.case,.bridge{display:grid;grid-template-columns:1.05fr 1fr;border:1px solid #405e64;border-radius:18px;overflow:hidden;background:#182d36;color:#edf4ea;animation:reveal .32s ease-out}
+.bridge{grid-template-columns:.9fr 1.5fr;border-color:#42666b}
+.finish-card{grid-template-columns:1.1fr .95fr}
+body.light .case,body.light .bridge,body.light dialog{background:#fffdf8;color:#2d2429;border-color:#cdc3b9}
+.brief,.orders,.portrait{padding:clamp(20px,3.8vw,42px);align-self:center}
+.orders small,.win small{color:#8ee1bc}
+body.light .orders small,body.light .win small{color:#29725a}
+.portrait{background:radial-gradient(ellipse,#315661,#152b36 80%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;align-self:stretch}
+body.light .portrait{background:radial-gradient(ellipse,#f3e8e5,#e6d5d0 85%)}
+.portrait canvas{width:min(100%,248px);image-rendering:pixelated;animation:float 4s ease-in-out infinite}
+.portrait small{color:#bad2c6}
+body.light .portrait small{color:#67525e}
+.scope{background:#301829;position:relative;min-height:240px;display:grid;place-items:center}
+.scope canvas{width:100%;height:auto;display:block;object-fit:contain}
+.scope small{position:absolute;bottom:12px;left:18px;background:#261826d9;color:#f5d5ce;padding:3px 8px;border-radius:4px}
+.reward-stage{background:radial-gradient(circle at 50% 42%,#284552,#112028 82%);position:relative;min-height:290px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;border-left:1px solid #405e64}
+body.light .reward-stage{background:radial-gradient(circle at 50% 42%,#f7ece8,#e3d2cc 85%);border-left-color:#cdc3b9}
+.reward-stage canvas{width:100%;max-width:440px;height:auto;display:block;border-radius:12px}
+.reward-rank{margin-top:10px;padding:5px 14px;border-radius:999px;font:bold 12px/1.4 ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase}
+.rank-gold{background:#473814;color:#ffe07d;border:1px solid #f5c84c}
+.rank-silver{background:#2b3d46;color:#e6f2f7;border:1px solid #a9c7d4}
+.rank-bronze{background:#422a1d;color:#f7c59f;border:1px solid #d98a59}
+.rank-warn{background:#472e17;color:#ffcb7d;border:1px solid #f0983e}
+.rank-fired{background:#4a1c24;color:#ff9da8;border:1px solid #eb5a68}
+.boss-quote{margin:12px 0 16px;padding:12px 16px;border-radius:10px;background:#12242d;border-left:4px solid #7ed6bb;font-style:italic}
+body.light .boss-quote{background:#f3e8e5;border-left-color:#98304b}
+.boss-quote.warn{border-left-color:#f0983e;background:#2f241c}
+body.light .boss-quote.warn{background:#fdf1e3;border-left-color:#d47a1e}
+.boss-quote.fired{border-left-color:#eb5a68;background:#361c22}
+body.light .boss-quote.fired{background:#fce8ea;border-left-color:#b82538}
+.crew{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px;background:#12242d;border:1px solid #405e64;border-radius:15px;padding:8px}
+body.light .crew{background:#efe9df;border-color:#cdc3b9}
+.choice{background:#182d36;color:#edf4ea;border:1px solid #405e64;border-radius:12px;padding:8px 4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;font-weight:bold;font-size:clamp(12px,1.2vw,15px);touch-action:none;user-select:none;cursor:grab;position:relative}
+body.light .choice{background:#fffdf8;color:#2d2429;border-color:#c9c1b9}
+.choice:active{cursor:grabbing}
+.choice:hover:enabled,.choice:focus-visible{background:#29474d;border-color:#81d5bf}
+body.light .choice:hover:enabled,body.light .choice:focus-visible{background:#f4e8e6;border-color:#8c2644}
+.choice canvas{width:58px;height:58px}
+.choice:disabled{cursor:default;opacity:.52}
+.choice.correct{border:2px solid #83d8b0;opacity:1}
+body.light .choice.correct{border-color:#29725a}
+.choice[aria-pressed="true"]{outline:2px solid #f2c676;background:#30474d}
+body.light .choice[aria-pressed="true"]{outline:2px solid #84203d;background:#f4e8e6}
+.key-hint{position:absolute;top:5px;left:6px;font:bold 10px/1 ui-monospace,monospace;color:#8bb4a6;opacity:.8}
+body.light .key-hint{color:#7a636d}
+.blind-label{font-style:italic;color:#9ab8ae;font-weight:normal}
+body.light .blind-label{color:#7a636d}
+.landing{border:2px dashed #92bdad;padding:0;overflow:hidden;cursor:crosshair}
+.landing.over{border:3px solid #ffda85}
+.landing #dropLabel{position:absolute;right:8px;top:8px;font:bold 12px ui-monospace,monospace;background:#153438e6;color:#fff5cd;border-radius:6px;padding:7px 9px}
+.dragged{position:fixed;pointer-events:none;transform:translate(-50%,-50%);width:68px;height:68px;z-index:99;filter:drop-shadow(0 3px 5px #141b25)}
+.line{margin:20px 0 10px}
+.line h3{margin:0}
+.instruction{font-size:14px;color:#c4d6d1;margin-bottom:8px}
+body.light .instruction{color:#5c4953}
+.feed{margin-top:15px;border-left:4px solid #f3bb7b;padding:14px 18px;background:#243741;border-radius:0 12px 12px 0;animation:reveal .25s ease-out}
+body.light .feed{background:#f3e8e5;border-color:#953153}
+.feed p{margin:6px 0}
+.feed h3{margin-top:4px;margin-bottom:6px}
+.win{border-color:#88d8b5;background:#183b35}
+body.light .win{border-color:#29725a;background:#e6f4ee}
+.loss{background:#3a2d31;border-color:#ffc6a4}
+body.light .loss{background:#faeae8;border-color:#b8334a}
+.loss small{color:#ffc6a4}
+body.light .loss small{color:#982639}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.next{border:0;background:#f2c676;color:#202b2d;border-radius:8px;padding:10px 20px;font-weight:700;margin:4px 0;text-decoration:none}
+body.light .next{background:#84203d;color:#fff}
+.next.secondary{background:#26434d;color:#e4f2ec;border:1px solid #4d7580}
+body.light .next.secondary{background:#efe6e2;color:#2d2429;border:1px solid #b8a9a4}
+.next.ghost-btn{background:transparent;color:#bad2c6;border:1px solid #405e64}
+body.light .next.ghost-btn{background:transparent;color:#5c4953;border:1px solid #cdc3b9}
+.score{font-size:14px;color:#b8d6ca}
+body.light .score{color:#5c4953}
+.refs{font-size:13px;color:#c2cec9;display:block;margin-top:4px}
+body.light .refs{color:#67525e}
+.stage-track{display:inline-flex;align-items:center;gap:6px;background:#24434b;color:#ffda85;border:1px solid #4d7580;border-radius:999px;padding:3px 10px;font:bold 11px/1.4 ui-monospace,monospace;margin-bottom:6px}
+body.light .stage-track{background:#f4e8e6;color:#84203d;border-color:#d5b8bf}
+.revisit-panel{margin-top:16px;padding:18px 22px;border:1px solid #405e64;border-radius:16px;background:#182d36}
+body.light .revisit-panel{background:#fffdf8;border-color:#cdc3b9}
+.revisit-list{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:10px}
+.revisit-item{padding:12px 14px;border-radius:10px;background:#12242d;border:1px solid #345159}
+body.light .revisit-item{background:#f6efe8;border-color:#d7d1c8}
+.codex-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin:14px 0}
+.codex-card{border:1px solid #405e64;border-radius:12px;padding:10px 12px;background:#12242d;display:flex;gap:10px;align-items:flex-start}
+body.light .codex-card{background:#f8f5ed;border-color:#cdc3b9}
+.codex-card canvas{width:52px;height:52px;flex-shrink:0}
+.codex-meta{font-size:13px;line-height:1.4}
+.codex-meta b{display:block;font-size:15px;margin-bottom:2px}
+.codex-badge{display:inline-block;font:bold 10px/1.3 ui-monospace,monospace;background:#24434b;color:#8ee1bc;padding:2px 6px;border-radius:4px;margin:2px 0 4px}
+body.light .codex-badge{background:#e6f4ee;color:#29725a}
+.mnemonic-box{padding:10px 14px;border-radius:10px;background:#243741;border-left:4px solid #7ed6bb;font-size:14px;margin-bottom:12px}
+body.light .mnemonic-box{background:#f3e8e5;border-color:#98304b}
+dialog{width:min(680px,92%);max-height:86vh;overflow-y:auto;border:1px solid #49666f;background:#182d36;color:#edf4ea;border-radius:16px;padding:24px 28px}
+dialog::backdrop{background:#0b141ab8}
+footer{margin-top:26px;border-top:1px solid #345159;font-size:13px}
+button:focus-visible{outline:3px solid #138078;outline-offset:3px}
+@keyframes reveal{from{opacity:.45;transform:translateY(5px)}to{opacity:1;transform:none}}
+@keyframes float{50%{transform:translateY(-4px)}}
+@media(max-width:720px){
+ header,main,footer{padding:16px}
+ .case,.bridge,.finish-card{grid-template-columns:1fr}
+ .reward-stage{border-left:0;border-top:1px solid #405e64;min-height:230px}
+ .portrait{padding:14px}
+ .portrait canvas{width:150px}
+ .scope{min-height:175px}
+ .scope canvas{max-height:190px}
+ .crew{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .crew .choice{font-size:12px;padding:6px 4px}
+ .crew .choice canvas{width:42px;height:42px}
+ .brief{padding:16px}
+ .brand{font-size:15px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+ <button id="homeBrand" type="button" class="brand" title="Return to Command Deck main menu"><b>✚</b> Blood Cell Dispatch</button>
+ <nav>
+  <button id="blindBtn" type="button" class="pill-toggle" aria-pressed="false" title="Hide cell names on the crew board to practice visual identification">Lab practical: Off</button>
+  <button id="soundBtn" type="button" class="pill-toggle" aria-pressed="true" title="Toggle synthesized dispatch audio">Sound: On</button>
+  <button id="themeBtn" type="button" class="pill-toggle" aria-pressed="false" title="Switch between dark command deck and brightfield microscope theme">Brightfield</button>
+  <button id="codex" type="button">Crew codex</button>
+  <button id="rules" type="button">How to play</button>
+  <button id="sources" type="button">Sources</button>
+ </nav>
+</header>
+<main>
+ <div class="eyebrow">Dispatch command &nbsp; / &nbsp; A&amp;P 10</div>
+ <h1>Blood Cell Dispatch</h1>
+ <p>Ten missions per shift. You command the crew.</p>
+ <section id="game"></section>
+</main>
+<footer>
+ <span>Blood lab · Chapter 10</span>
+ <button id="download" type="button">Save offline game ↓</button>
+</footer>
+<dialog id="info">
+ <div id="detail"></div>
+ <button class="next" id="closeModal" type="button">Close</button>
+</dialog>
 <script>
 const cells=[
-['Platelets','Cell fragments stick to a damaged vessel and to one another, forming a temporary plug.',22],
-['Erythrocyte','Hemoglobin in a red blood cell binds oxygen for delivery to tissues.',8],
-['Neutrophil','This early responder engulfs microbes during an acute infection.',16],
-['Eosinophil','Its granules release enzymes that damage parasitic worms.',17],
-['Basophil','It releases histamine, which helps drive inflammation.',18],
-['Lymphocyte','B and T lymphocytes carry out targeted immune responses. Activated B cells can become antibody-secreting plasma cells.',19],
-['Monocyte','A circulating monocyte can enter tissue and develop into a macrophage that engulfs microbes and debris.',20]];
-const cases=[
-['A scraped knee','A cyclist scrapes a knee. A tiny vessel tears, and blood seeps out. Which component can quickly plug the break?',[1,0,2],0,'Look for small fragments that can stick together.','Vessel wall injury'],
-['Bacteria at the wound','Bacteria enter the scrape. Which white blood cell rushes to the site early in this acute infection and engulfs them?',[2,3,1],2,'The early responder you need is a phagocyte with a multilobed nucleus.','Bacteria near the wound'],
-['The uphill sprint','The cyclist is back on the bike. Working leg muscles need more oxygen. Which cell transports it from the lungs?',[4,6,1],1,'Look for the cell packed with hemoglobin.','Oxygen delivery'],
-['An oversized invader','A parasitic worm is too large for a white blood cell to swallow. Which cell can release enzymes onto its surface?',[2,3,0],3,'The defender has a two-lobed nucleus and red-orange granules.','Parasitic worm'],
-['The histamine signal','After pollen exposure, an inflammatory response begins. Which circulating white blood cell can release histamine?',[4,1,3],4,'Look for the cell whose large, dark granules store histamine.','Allergen exposure'],
-['A targeted response','The body needs antibodies that recognize a particular virus. Which cell group includes B cells that can mature into antibody-producing plasma cells?',[6,0,5],5,'B cells and T cells belong to the same family.','Viral particles'],
-['Cleanup crew','Damaged tissue contains cell debris. Which circulating cell can leave the blood and become a macrophage to engulf it?',[6,2,4],6,'Look for a large cell with a kidney-shaped nucleus.','Tissue debris']];
-const palette=['#d998dc','#eb5a68','#d7bded','#f4b58e','#a18ace','#a8c4eb','#c4d8c8'];
-function oval(c,x,y,a,b,color,angle=0){c.beginPath();c.ellipse(x,y,a,b,angle,0,Math.PI*2);c.fillStyle=color;c.fill()}
-function cell(c,id,x,y,r,angle=0){c.save();c.translate(x,y);c.rotate(angle);if(id===0){for(const [a,b] of [[-.35,-.25],[.3,.1],[-.2,.45]]){oval(c,a*r,b*r,r*.36,r*.23,palette[id],a);oval(c,a*r,b*r,r*.15,r*.11,'#934d9b')}}else if(id===1){oval(c,0,0,r,r*.70,'#a82f50');oval(c,0,-.09*r,r*.94,r*.63,'#fb777a');oval(c,0,-.07*r,r*.56,r*.31,'#bf3e58');oval(c,0,.02*r,r*.37,r*.14,'#da5666')}else{oval(c,0,0,r,r*.97,palette[id]);if(id===6){oval(c,0,0,r*.58,r*.66,'#644979');oval(c,r*.4,-r*.1,r*.38,r*.32,palette[id])}else if(id===5){oval(c,-r*.1,-r*.08,r*.77,r*.74,'#504475')}else{const n=id===2?3:2;for(let j=0;j<n;j++){let a=j*2*Math.PI/n;oval(c,r*.35*Math.cos(a),r*.33*Math.sin(a),r*.34,r*.37,'#633967')}for(let j=0;j<(id===4?55:id===3?35:11);j++){let a=j*2.4,d=r*.88*Math.sqrt((j+.5)/(id===4?55:id===3?35:11));oval(c,d*Math.cos(a),d*Math.sin(a),r*.065,r*.06,id===3?'#bf5845':'#765184')}}}c.restore()}
-const outcomes = [
+ ['Platelets','Cell fragments stick to a damaged vessel and to one another, forming a temporary plug.',22,'150k–400k / µL · Fragments','Small purple cytoplasmic fragments with no nucleus.'],
+ ['Erythrocyte','Hemoglobin in a red blood cell binds oxygen for delivery to tissues.',8,'4.2–6.2M / µL · RBC','Pink-red biconcave disc with a pale central pallor and no nucleus.'],
+ ['Neutrophil','This early responder engulfs microbes during an acute infection.',16,'50–70% of WBCs (#1)','3–6 nuclear lobes connected by thin chromatin strands; pale lilac granules.'],
+ ['Eosinophil','Its granules release enzymes that damage parasitic worms.',17,'2–4% of WBCs (#4)','Bilobed nucleus surrounded by bright red-orange cytoplasmic granules.'],
+ ['Basophil','It releases histamine, which helps drive inflammation.',18,'<1% of WBCs (#5)','Bilobed/S-shaped nucleus largely obscured by deep indigo histamine granules.'],
+ ['Lymphocyte','B and T lymphocytes carry out targeted immune responses. Activated B cells can become antibody-secreting plasma cells.',19,'25–45% of WBCs (#2)','Large spherical dark-purple nucleus occupying most of the cell volume; thin rim of pale blue cytoplasm.'],
+ ['Monocyte','A circulating monocyte can enter tissue and develop into a macrophage that engulfs microbes and debris.',20,'3–8% of WBCs (#3)','Large leukocyte with a distinct kidney- or horseshoe-shaped nucleus and abundant gray-blue cytoplasm.']
+];
+
+const caseBank=[
+ [
+  "Kitchen cut",
+  "While slicing a tomato, a cook nicks a fingertip. Blood seeps from a tiny vessel. Dispatch the component that can form the first plug.",
+  0,
+  "Look for small fragments that stick together.",
+  "Torn vessel"
+ ],
+ [
+  "A thorn in the greenhouse",
+  "A gardener gets a rose thorn in one hand. Bacteria slip through the puncture. Send an early responder that can engulf them during an acute infection.",
+  2,
+  "Look for a phagocyte with a multilobed nucleus.",
+  "Bacteria at the puncture"
+ ],
+ [
+  "The final lap",
+  "A swimmer pushes off the wall for the final lap. The working shoulder muscles need oxygen from the lungs. Send the crew member that carries it.",
+  1,
+  "Look for the cell packed with hemoglobin.",
+  "Working shoulder muscle"
+ ],
+ [
+  "Too big to swallow",
+  "At a field clinic, a microscope reveals a parasitic worm in a tissue sample. It is too large to engulf. Send a cell that releases enzymes onto its surface.",
+  3,
+  "Look for a two-lobed nucleus and red-orange granules.",
+  "Worm in tissue"
+ ],
+ [
+  "Pollen at the park",
+  "Wind lifts pollen over a picnic. The dispatch call asks for a circulating white blood cell that can release histamine during this allergic response.",
+  4,
+  "Look for dark granules that store histamine.",
+  "Pollen exposure"
+ ],
+ [
+  "Vaccine follow-up",
+  "After a student's vaccination, the body is building an antibody response. Dispatch the cell family whose B cells can mature into antibody-producing plasma cells.",
+  5,
+  "B cells and T cells belong to this family.",
+  "Viral antigen"
+ ],
+ [
+  "Recovery after rehearsal",
+  "Days after a dancer bruises a calf, damaged tissue contains cell debris. Send the circulating cell that can enter tissue and become a macrophage.",
+  6,
+  "Look for a large cell with a kidney-shaped nucleus.",
+  "Debris in calf muscle"
+ ],
+ [
+  "A whistle on the court",
+  "A basketball player scrapes an elbow on the floor. Send the fragments that stick to exposed tissue and form the first seal.",
+  0,
+  "Look for small fragments that stick together.",
+  "Elbow capillary"
+ ],
+ [
+  "After the blood draw",
+  "A needle has just been removed from a vein. Which crew members collect at the small opening to form a plug before fibrin reinforces it?",
+  0,
+  "Look for small fragments that stick together.",
+  "Needle puncture"
+ ],
+ [
+  "The cracked lip",
+  "A singer’s chapped lip splits during rehearsal. Dispatch the component that clumps at the injured vessel to slow bleeding.",
+  0,
+  "Look for small fragments that stick together.",
+  "Lip vessel"
+ ],
+ [
+  "Splinter at the workbench",
+  "A woodworker gets a splinter. Bacteria slip into the wound. Send the early-arriving phagocyte with a segmented nucleus.",
+  2,
+  "Look for a phagocyte with a multilobed nucleus.",
+  "Splinter wound"
+ ],
+ [
+  "The slide from urgent care",
+  "A sample from a new bacterial wound shows cells with several connected nuclear lobes. Send the matching crew member to engulf the bacteria.",
+  2,
+  "Look for a phagocyte with a multilobed nucleus.",
+  "Wound sample"
+ ],
+ [
+  "Broken blister",
+  "A hiker’s blister breaks. Bacteria enter, and an early wave of white cells arrives. Dispatch the cell that swallows bacteria during this acute response.",
+  2,
+  "Look for a phagocyte with a multilobed nucleus.",
+  "Heel blister"
+ ],
+ [
+  "The stairwell",
+  "A stagehand carries a speaker upstairs. The leg muscles need oxygen for the climb. Send the cell that unloads oxygen from hemoglobin.",
+  1,
+  "Look for the cell packed with hemoglobin.",
+  "Climbing muscles"
+ ],
+ [
+  "Cold morning",
+  "A camper starts to shiver. The contracting muscles need a fresh oxygen delivery. Which crew member can pick up that cargo in the lungs?",
+  1,
+  "Look for the cell packed with hemoglobin.",
+  "Shivering muscle"
+ ],
+ [
+  "A long violin solo",
+  "A violinist’s forearm muscles are working through a long solo. Dispatch the biconcave cell that supplies their oxygen.",
+  1,
+  "Look for the cell packed with hemoglobin.",
+  "Forearm muscle"
+ ],
+ [
+  "Parasite under the lens",
+  "In a lab simulation, the target is a worm too large to engulf. Deliver a cell that empties damaging granules onto its surface.",
+  3,
+  "Look for a two-lobed nucleus and red-orange granules.",
+  "Parasite sample"
+ ],
+ [
+  "A tissue-section puzzle",
+  "A class examines tissue around a parasitic worm. The responding cells have red-orange granules and two nuclear lobes. Match the crew to the slide.",
+  3,
+  "Look for a two-lobed nucleus and red-orange granules.",
+  "Tissue section"
+ ],
+ [
+  "The traveler’s sample",
+  "A clinic identifies a parasitic worm in a traveler’s sample. Which crew member delivers an enzyme attack outside the cell?",
+  3,
+  "Look for a two-lobed nucleus and red-orange granules.",
+  "Worm surface"
+ ],
+ [
+  "Flowers at rehearsal",
+  "Pollen drifts from a bouquet. Dispatch the circulating white cell whose dark granules can release histamine during an allergic response.",
+  4,
+  "Look for dark granules that store histamine.",
+  "Bouquet pollen"
+ ],
+ [
+  "The dusty attic",
+  "An allergy simulation follows a dust exposure. A circulating cell releases histamine. Dispatch the crew member with large dark granules.",
+  4,
+  "Look for dark granules that store histamine.",
+  "Dust allergen"
+ ],
+ [
+  "Allergy lab",
+  "A lab animation pauses before a blood cell releases histamine in response to an allergen. Send the matching cell to resume the signal.",
+  4,
+  "Look for dark granules that store histamine.",
+  "Allergen signal"
+ ],
+ [
+  "The booster visit",
+  "After a booster, the body mounts a targeted antibody response. Send the family containing B cells, which can become plasma cells.",
+  5,
+  "B cells and T cells belong to this family.",
+  "Vaccine antigen"
+ ],
+ [
+  "An antibody match",
+  "A science-fair model shows antibodies binding a specific viral target. Dispatch the cell family that gives rise to the antibody-secreting cells.",
+  5,
+  "B cells and T cells belong to this family.",
+  "Viral target"
+ ],
+ [
+  "The immune memory exhibit",
+  "A museum exhibit follows a memory B cell responding to a familiar viral antigen. Dispatch its cell family to complete the antibody-response display.",
+  5,
+  "B cells and T cells belong to this family.",
+  "Familiar antigen"
+ ],
+ [
+  "After the ankle sprain",
+  "Days after a trail runner sprains an ankle, tissue debris needs clearing. Send a circulating cell that can mature into a macrophage at the site.",
+  6,
+  "Look for a large cell with a kidney-shaped nucleus.",
+  "Ankle tissue"
+ ],
+ [
+  "A healing incision",
+  "During recovery, damaged cells remain near an incision. Dispatch the blood cell that can enter tissue, become a macrophage, and engulf debris.",
+  6,
+  "Look for a large cell with a kidney-shaped nucleus.",
+  "Healing tissue"
+ ],
+ [
+  "Microscope handoff",
+  "A student tracks a large blood cell with a kidney-shaped nucleus. Send it into damaged tissue, where it can develop into a debris-clearing macrophage.",
+  6,
+  "Look for a large cell with a kidney-shaped nucleus.",
+  "Damaged tissue"
+ ]
+];
+
+const cascadeBank=[
+ [
+  "Cascade: Deep greenhouse laceration",
+  "Stage 1 of 3 — Vascular phase: A pruning shear slices a dermal vessel. First, dispatch the fragments that adhere to exposed collagen and form a temporary hemostatic plug.",
+  0,
+  "Look for small cell fragments that stick together.",
+  "Stage 1: Torn dermal vessel",
+  [
+   [
+    "Stage 1 of 3 — Vascular phase: A pruning shear slices a dermal vessel. First, dispatch the fragments that adhere to exposed collagen and form a temporary hemostatic plug.",
+    0,
+    "Look for small cell fragments that stick together.",
+    "Stage 1: Torn dermal vessel"
+   ],
+   [
+    "Stage 2 of 3 — Acute bacterial defense: Soil bacteria enter through the cut. Dispatch the first-arriving polymorphonuclear phagocyte to engulf them.",
+    2,
+    "Look for a phagocyte with a multilobed nucleus connected by thin strands.",
+    "Stage 2: Bacteria in wound"
+   ],
+   [
+    "Stage 3 of 3 — Tissue resolution: Forty-eight hours later, spent cells and tissue debris remain. Dispatch the large circulating leukocyte that matures into a macrophage.",
+    6,
+    "Look for a large cell with a kidney-shaped nucleus.",
+    "Stage 3: Wound debris cleanup"
+   ]
+  ]
+ ],
+ [
+  "Cascade: Trail-run puncture & recovery",
+  "Stage 1 of 3 — Hemostasis: A trail runner scrapes a shin on sharp shale. First, send the component that clumps at the capillary tear to seal the opening.",
+  0,
+  "Look for small fragments that stick together.",
+  "Stage 1: Capillary tear",
+  [
+   [
+    "Stage 1 of 3 — Hemostasis: A trail runner scrapes a shin on sharp shale. First, send the component that clumps at the capillary tear to seal the opening.",
+    0,
+    "Look for small fragments that stick together.",
+    "Stage 1: Capillary tear"
+   ],
+   [
+    "Stage 2 of 3 — Oxygen demand: As the runner climbs back to the trailhead, the calf muscles demand oxygen. Dispatch the hemoglobin-packed disc.",
+    1,
+    "Look for the biconcave cell packed with hemoglobin.",
+    "Stage 2: Exercising calf muscle"
+   ],
+   [
+    "Stage 3 of 3 — Delayed cleanup: Days later, bruised tissue needs remodeling. Dispatch the leukocyte that enters tissue to become a debris-clearing macrophage.",
+    6,
+    "Look for a large cell with a kidney-shaped nucleus.",
+    "Stage 3: Bruised calf tissue"
+   ]
+  ]
+ ],
+ [
+  "Cascade: Field clinic multi-threat",
+  "Stage 1 of 3 — Histamine signal: An allergic reaction flares at the site of a contaminated bite. First, send the circulating leukocyte whose dark granules release histamine.",
+  4,
+  "Look for deep dark granules that store histamine.",
+  "Stage 1: Local allergen flare",
+  [
+   [
+    "Stage 1 of 3 — Histamine signal: An allergic reaction flares at the site of a contaminated bite. First, send the circulating leukocyte whose dark granules release histamine.",
+    4,
+    "Look for deep dark granules that store histamine.",
+    "Stage 1: Local allergen flare"
+   ],
+   [
+    "Stage 2 of 3 — Helminth defense: Biopsy reveals a parasitic larva too large for phagocytosis. Send the bilobed granulocyte that releases destructive enzymes onto its surface.",
+    3,
+    "Look for a two-lobed nucleus and bright red-orange granules.",
+    "Stage 2: Parasitic larva"
+   ],
+   [
+    "Stage 3 of 3 — Specific immunity: Finally, dispatch the agranulocyte family whose B cells differentiate into antibody-secreting plasma cells.",
+    5,
+    "B cells and T cells belong to this family with a large spherical nucleus.",
+    "Stage 3: Antigen target"
+   ]
+  ]
+ ]
+];
+
+const palette=['#d998dc','#eb5a68','#d7bded','#f4b58e','#b39ddb','#a8c4eb','#c4d8c8'];
+
+function oval(c,x,y,a,b,color,angle=0){
+ c.beginPath();
+ c.ellipse(x,y,a,b,angle,0,Math.PI*2);
+ c.fillStyle=color;
+ c.fill();
+}
+
+function cell(c,id,x,y,r,angle=0){
+ c.save();
+ c.translate(x,y);
+ c.rotate(angle);
+ if(id===0){
+  for(const [a,b] of [[-.35,-.25],[.3,.1],[-.2,.45]]){
+   oval(c,a*r,b*r,r*.36,r*.23,palette[id],a);
+   oval(c,a*r,b*r,r*.15,r*.11,'#934d9b');
+  }
+ }else if(id===1){
+  oval(c,0,0,r,r*.70,'#a82f50');
+  oval(c,0,-.09*r,r*.94,r*.63,'#fb777a');
+  oval(c,0,-.07*r,r*.56,r*.31,'#bf3e58');
+  oval(c,0,.02*r,r*.37,r*.14,'#da5666');
+ }else{
+  oval(c,0,0,r,r*.97,palette[id]);
+  if(id===6){
+   oval(c,0,0,r*.58,r*.66,'#644979');
+   oval(c,r*.4,-r*.1,r*.38,r*.32,palette[id]);
+  }else if(id===5){
+   oval(c,-r*.08,-r*.06,r*.78,r*.75,'#45386e');
+   oval(c,-r*.22,-r*.2,r*.32,r*.26,'#594a87');
+  }else{
+   const n=id===2?3:2;
+   const pts=[];
+   for(let j=0;j<n;j++){
+    const a=j*2*Math.PI/n-(id===2?Math.PI/6:0);
+    pts.push([r*.36*Math.cos(a),r*.34*Math.sin(a)]);
+   }
+   if(id===2){
+    c.strokeStyle='#4e2854';
+    c.lineWidth=Math.max(1.4,r*.08);
+    c.beginPath();
+    c.moveTo(pts[0][0],pts[0][1]);
+    c.lineTo(pts[1][0],pts[1][1]);
+    c.lineTo(pts[2][0],pts[2][1]);
+    c.closePath();
+    c.stroke();
+   }
+   for(const [px,py] of pts){
+    oval(c,px,py,r*.33,r*.35,id===4?'#523b78':'#633967');
+   }
+   const gCount=id===4?64:id===3?38:14;
+   for(let j=0;j<gCount;j++){
+    const a=j*2.4;
+    const d=r*.86*Math.sqrt((j+.4)/gCount);
+    const gRadius=id===4?r*.082:id===3?r*.07:r*.05;
+    const gColor=id===3?'#c94a38':id===4?(j%2?'#23143d':'#38215c'):'#8b659c';
+    oval(c,d*Math.cos(a),d*Math.sin(a),gRadius,gRadius*.92,gColor);
+   }
+  }
+ }
+ c.restore();
+}
+
+const outcomes=[
  ['Bleeding contained','The platelets gather at the tear and seal it with a temporary plug.','Blood is still escaping through the tear.'],
  ['Bacteria intercepted','The neutrophil surrounds and engulfs a bacterium.','The bacteria remain active at the wound.'],
  ['Oxygen delivered','Oxygen leaves hemoglobin and reaches the working muscle.','The muscle is still waiting for its oxygen delivery.'],
  ['Parasite hit','Enzymes released by the eosinophil damage the worm’s surface.','The worm remains active in the tissue.'],
  ['Signal released','Histamine spreads from the basophil, helping start the inflammatory response.','The requested histamine signal is still missing.'],
- ['Antibodies deployed','Over time, an activated B cell develops into a plasma cell. Its antibodies bind the virus.','The virus still lacks the requested antibodies.'],
+ ['Antibodies deployed','Over time, an activated B cell develops into a plasma cell. Its antibodies bind the viral antigen.','The crew still needs antibodies that recognize the antigen.'],
  ['Debris cleared','In the tissue, the monocyte develops into a macrophage and engulfs debris.','Debris remains at the injury site.']
 ];
+
 let frame=0;
 let timer=0;
 let busy=false;
+let blindMode=false;
+let soundOn=true;
+let audioCtx=null;
 const minimal=matchMedia('(prefers-reduced-motion: reduce)').matches;
-function stopScene(){cancelAnimationFrame(frame);clearTimeout(timer)}
+
+function sfx(type){
+ if(!soundOn||minimal)return;
+ try{
+  const AC=window.AudioContext||window.webkitAudioContext;
+  if(!AC)return;
+  if(!audioCtx)audioCtx=new AC();
+  if(audioCtx.state==='suspended')audioCtx.resume();
+  const now=audioCtx.currentTime;
+  const osc=audioCtx.createOscillator();
+  const gain=audioCtx.createGain();
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  if(type==='select'){
+   osc.type='sine';
+   osc.frequency.setValueAtTime(520,now);
+   osc.frequency.exponentialRampToValueAtTime(660,now+0.06);
+   gain.gain.setValueAtTime(0.04,now);
+   gain.gain.exponentialRampToValueAtTime(0.001,now+0.07);
+   osc.start(now);osc.stop(now+0.07);
+  }else if(type==='dispatch'){
+   osc.type='triangle';
+   osc.frequency.setValueAtTime(300,now);
+   osc.frequency.exponentialRampToValueAtTime(540,now+0.18);
+   gain.gain.setValueAtTime(0.05,now);
+   gain.gain.exponentialRampToValueAtTime(0.001,now+0.19);
+   osc.start(now);osc.stop(now+0.19);
+  }else if(type==='win'){
+   osc.type='triangle';
+   osc.frequency.setValueAtTime(523.25,now);
+   osc.frequency.setValueAtTime(659.25,now+0.08);
+   osc.frequency.setValueAtTime(783.99,now+0.16);
+   gain.gain.setValueAtTime(0.06,now);
+   gain.gain.exponentialRampToValueAtTime(0.001,now+0.32);
+   osc.start(now);osc.stop(now+0.32);
+  }else if(type==='loss'){
+   osc.type='sawtooth';
+   osc.frequency.setValueAtTime(240,now);
+   osc.frequency.linearRampToValueAtTime(175,now+0.22);
+   gain.gain.setValueAtTime(0.04,now);
+   gain.gain.exponentialRampToValueAtTime(0.001,now+0.24);
+   osc.start(now);osc.stop(now+0.24);
+  }else if(type==='gold'){
+   osc.type='triangle';
+   osc.frequency.setValueAtTime(523.25,now);
+   osc.frequency.setValueAtTime(659.25,now+0.09);
+   osc.frequency.setValueAtTime(783.99,now+0.18);
+   osc.frequency.setValueAtTime(1046.5,now+0.27);
+   gain.gain.setValueAtTime(0.07,now);
+   gain.gain.exponentialRampToValueAtTime(0.001,now+0.55);
+   osc.start(now);osc.stop(now+0.55);
+  }else if(type==='silver'||type==='bronze'){
+   osc.type='triangle';
+   osc.frequency.setValueAtTime(440,now);
+   osc.frequency.setValueAtTime(554.37,now+0.1);
+   osc.frequency.setValueAtTime(659.25,now+0.2);
+   gain.gain.setValueAtTime(0.06,now);
+   gain.gain.exponentialRampToValueAtTime(0.001,now+0.42);
+   osc.start(now);osc.stop(now+0.42);
+  }else if(type==='warn'){
+   osc.type='sawtooth';
+   osc.frequency.setValueAtTime(310,now);
+   osc.frequency.setValueAtTime(250,now+0.14);
+   gain.gain.setValueAtTime(0.05,now);
+   gain.gain.exponentialRampToValueAtTime(0.001,now+0.34);
+   osc.start(now);osc.stop(now+0.34);
+  }else if(type==='fired'){
+   osc.type='sawtooth';
+   osc.frequency.setValueAtTime(293.66,now);
+   osc.frequency.setValueAtTime(277.18,now+0.14);
+   osc.frequency.setValueAtTime(261.63,now+0.28);
+   osc.frequency.linearRampToValueAtTime(185,now+0.55);
+   gain.gain.setValueAtTime(0.06,now);
+   gain.gain.exponentialRampToValueAtTime(0.001,now+0.58);
+   osc.start(now);osc.stop(now+0.58);
+  }
+ }catch(e){}
+}
+
+function clearGhost(){
+ document.querySelectorAll('.dragged').forEach(el=>el.remove());
+}
+
+function stopScene(){
+ cancelAnimationFrame(frame);
+ clearTimeout(timer);
+ clearGhost();
+}
+
+function drawBacterium(c,x,y,angle,wiggle,alpha=1){
+ c.save();
+ c.globalAlpha=alpha;
+ c.translate(x,y);
+ c.rotate(angle);
+ oval(c,0,0,12.5,5.8,'#56a87255');
+ c.fillStyle='#8ce0a8';
+ c.strokeStyle='#397a50';
+ c.lineWidth=1.3;
+ c.beginPath();
+ c.roundRect(-10,-4,20,8,4);
+ c.fill();
+ c.stroke();
+ c.strokeStyle='#499e68';
+ c.lineWidth=1.1;
+ c.beginPath();
+ c.moveTo(-6,0);
+ c.quadraticCurveTo(-2,-2,2,1.5);
+ c.quadraticCurveTo(5,2.5,7,-1);
+ c.stroke();
+ c.strokeStyle='#a8efc088';
+ c.lineWidth=0.9;
+ for(let p=-7;p<=7;p+=4.5){
+  c.beginPath();
+  c.moveTo(p,-4);c.lineTo(p-1,-6.5);
+  c.moveTo(p,4);c.lineTo(p+1,6.5);
+  c.stroke();
+ }
+ c.strokeStyle='#b8f5cc';
+ c.lineWidth=1.2;
+ c.beginPath();
+ c.moveTo(-10,0);
+ for(let s=1;s<=12;s++){
+  c.lineTo(-10-s*1.5,Math.sin(wiggle+s*0.65)*2.8);
+ }
+ c.stroke();
+ c.restore();
+}
+
+function drawVirion(c,x,y,angle,boundEffect=0){
+ c.save();
+ c.translate(x,y);
+ c.rotate(angle);
+ const spikes=10;
+ c.strokeStyle='#9ec5f8';
+ c.lineWidth=1.4;
+ for(let k=0;k<spikes;k++){
+  const a=k*Math.PI*2/spikes;
+  const x1=Math.cos(a)*6.5,y1=Math.sin(a)*6.5;
+  const x2=Math.cos(a)*11,y2=Math.sin(a)*11;
+  c.beginPath();
+  c.moveTo(x1,y1);
+  c.lineTo(x2,y2);
+  c.stroke();
+  oval(c,x2,y2,2.1,1.6,'#d2e6ff',a);
+ }
+ c.fillStyle=boundEffect>0.4?'#5f789e':'#6d9ae0';
+ c.strokeStyle='#d6e8ff';
+ c.lineWidth=1.2;
+ c.beginPath();
+ for(let k=0;k<6;k++){
+  const a=k*Math.PI/3;
+  const vx=Math.cos(a)*7.2,vy=Math.sin(a)*7.2;
+  if(k===0)c.moveTo(vx,vy);else c.lineTo(vx,vy);
+ }
+ c.closePath();
+ c.fill();
+ c.stroke();
+ c.strokeStyle='#39588a88';
+ c.lineWidth=0.9;
+ c.beginPath();
+ c.moveTo(-7,0);c.lineTo(7,0);
+ c.moveTo(-3.5,-6);c.lineTo(3.5,6);
+ c.moveTo(3.5,-6);c.lineTo(-3.5,6);
+ c.stroke();
+ if(boundEffect>0.15){
+  c.save();
+  c.globalAlpha=Math.min(1,(boundEffect-0.15)/0.5);
+  c.strokeStyle='#ffe18a';
+  c.lineWidth=2.1;
+  c.lineCap='round';
+  for(const dir of [-0.75,2.2]){
+   c.save();
+   c.rotate(dir);
+   c.beginPath();
+   c.moveTo(11,0);
+   c.lineTo(15,-3.5);
+   c.moveTo(11,0);
+   c.lineTo(15,3.5);
+   c.moveTo(15,0);
+   c.lineTo(21,0);
+   c.stroke();
+   c.restore();
+  }
+  c.restore();
+ }
+ c.restore();
+}
+
+function drawPollenGrain(c,x,y,r,angle){
+ c.save();
+ c.translate(x,y);
+ c.rotate(angle);
+ const spikes=12;
+ c.fillStyle='#f8d878';
+ for(let k=0;k<spikes;k++){
+  const a=k*Math.PI*2/spikes;
+  c.beginPath();
+  c.moveTo(Math.cos(a-0.18)*(r-1),Math.sin(a-0.18)*(r-1));
+  c.lineTo(Math.cos(a)*(r+4.2),Math.sin(a)*(r+4.2));
+  c.lineTo(Math.cos(a+0.18)*(r-1),Math.sin(a+0.18)*(r-1));
+  c.closePath();
+  c.fill();
+ }
+ oval(c,0,0,r,r*.94,'#dfa63c');
+ oval(c,-r*.2,-r*.2,r*.68,r*.62,'#f2c55c');
+ oval(c,-r*.3,r*.15,r*.18,r*.14,'#a87119',0.3);
+ oval(c,r*.28,-r*.1,r*.17,r*.13,'#a87119',-0.4);
+ oval(c,r*.08,r*.35,r*.16,r*.12,'#a87119',0.1);
+ c.restore();
+}
+
+function drawDebrisShard(c,x,y,kind,angle,alpha=1){
+ c.save();
+ c.globalAlpha=alpha;
+ c.translate(x,y);
+ c.rotate(angle);
+ if(kind%3===0){
+  c.fillStyle='#c988a8';
+  c.strokeStyle='#f0bfd5';
+  c.lineWidth=1.1;
+  c.beginPath();
+  c.moveTo(-10,-3);
+  c.lineTo(-3,-8);
+  c.lineTo(8,-5);
+  c.lineTo(11,3);
+  c.lineTo(2,8);
+  c.lineTo(-7,5);
+  c.closePath();
+  c.fill();
+  c.stroke();
+  oval(c,-1,0,3.2,2.1,'#7d4665',0.4);
+ }else if(kind%3===1){
+  oval(c,0,0,9.5,5.2,'#a87ca0');
+  c.strokeStyle='#5e3a58';
+  c.lineWidth=1.1;
+  c.beginPath();
+  c.moveTo(-6,0);
+  c.lineTo(-3,-3);
+  c.lineTo(0,2.5);
+  c.lineTo(3,-2.5);
+  c.lineTo(6,1);
+  c.stroke();
+ }else{
+  oval(c,-3,-2,5.5,4.8,'#d49ab8');
+  oval(c,4,2,4.2,3.8,'#b57ba0');
+  oval(c,1,-4,3.1,2.8,'#e2b5cc');
+  oval(c,-2,-1,2.2,2.0,'#5d3451');
+ }
+ c.restore();
+}
+
 function paintScene(canvas,round,unit=null,right=false){
  stopScene();
  const c=canvas.getContext('2d'),start=performance.now();
@@ -43,67 +1528,977 @@ function paintScene(canvas,round,unit=null,right=false){
   const t=minimal?3:(now-start)/1000;
   const arrival=unit===null?0:Math.min(1,t/0.85);
   const effect=right?Math.min(1,Math.max(0,(t-.85)/.95)):0;
-  const failed=unit!==null&&!right&&arrival===1;
-  const bg=c.createLinearGradient(0,0,0,270);bg.addColorStop(0,'#20152c');bg.addColorStop(.55,'#66344d');bg.addColorStop(1,'#29172e');c.fillStyle=bg;c.fillRect(0,0,500,270);
-  for(let j=0;j<65;j++){const x=(j*79+t*12)%510;oval(c,x,(j*41)%257,1.4,1,'#e6c0d34a')}
-  for(let j=0;j<12;j++){const x=(j*113+t*(10+j%5))%550-25,y=30+(j*53)%190;if(Math.abs(x-300)>65||Math.abs(y-135)>63)cell(c,1,x,y,10+j%8,j*.6+t*.05)}
+  const failed=unit!==null&&!right&&arrival>=0.95;
+
+  const bg=c.createLinearGradient(0,0,0,270);
+  bg.addColorStop(0,'#1d1128');
+  bg.addColorStop(.52,'#5e2c46');
+  bg.addColorStop(1,'#241229');
+  c.fillStyle=bg;
+  c.fillRect(0,0,500,270);
+
+  c.fillStyle='#3d1c33aa';
+  c.fillRect(0,0,500,14);
+  if(round!==0){
+   c.fillRect(0,256,500,14);
+  }else{
+   c.fillRect(0,256,260,14);
+   c.fillRect(352,256,148,14);
+  }
+  for(let e=0;e<13;e++){
+   oval(c,e*42+18,7,18,4,'#7a3e5c55');
+   if(round!==0||e<6||e>8)oval(c,e*42+18,263,18,4,'#7a3e5c55');
+  }
+
+  for(let j=0;j<65;j++){
+   const x=(j*79+t*14)%510;
+   oval(c,x,18+(j*41)%234,1.5,1,'#f0cade42');
+  }
+  for(let j=0;j<12;j++){
+   const x=(j*113+t*(11+j%5))%550-25,y=28+(j*53)%195;
+   if(Math.abs(x-306)>72||Math.abs(y-125)>66)cell(c,1,x,y,10+j%7,j*.6+t*.06);
+  }
+
+  const spot=c.createRadialGradient(306,125,8,306,125,88);
+  spot.addColorStop(0,effect>0.5?'#7ed6bb24':'#ff9eb518');
+  spot.addColorStop(1,'#00000000');
+  c.fillStyle=spot;
+  c.fillRect(210,35,192,180);
+
   const x=306,y=125;
-  c.save();c.translate(x,y);
+  c.save();
+  c.translate(x,y);
+
   if(round===0){
-   for(let j=-6;j<=6;j++)if(j!==0)oval(c,j*15,35+Math.abs(j)*2,10,6,'#efa49c',j*.045);
-   if(effect<.95)for(let j=0;j<4;j++)cell(c,1,Math.sin(j)*7,42+(t*(failed?75:42)+j*20)%85,5,1);
-   for(let j=0;j<effect*8;j++)cell(c,0,(j%4)*6-9,34-Math.floor(j/4)*6,9,j);
+   for(let j=-6;j<=6;j++){
+    if(j===-1||j===0||j===1)continue;
+    const ex=j*16,ey=36+Math.abs(j)*1.5;
+    oval(c,ex,ey,12,6.5,'#e58f88',j*.04);
+    oval(c,ex,ey,4.5,2.2,'#7c2d46',j*.04);
+   }
+   c.strokeStyle='#f7d4b2';
+   c.lineWidth=1.5;
+   for(const [cx,cy,tx,ty] of [[-28,38,-14,22],[-22,42,-8,28],[-16,45,-4,33],[28,38,14,22],[22,42,8,28],[16,45,4,33]]){
+    c.beginPath();
+    c.moveTo(cx,cy);
+    c.quadraticCurveTo((cx+tx)/2,cy-8,tx+Math.sin(t*3+cx)*1.5,ty);
+    c.stroke();
+   }
+   if(effect<.92){
+    for(let j=0;j<5;j++){
+     const leakY=34+((t*(failed?80:46)+j*18)%78);
+     const leakX=Math.sin(j*2.1+t*2)*10*(1-effect);
+     cell(c,1,leakX,leakY,6.2*(1-effect*0.5),j+t);
+    }
+   }
+   if(effect>0){
+    const pCount=Math.ceil(effect*11);
+    for(let j=0;j<pCount;j++){
+     const px=((j%4)-1.5)*10+Math.sin(j)*3;
+     const py=35-Math.floor(j/4)*5;
+     cell(c,0,px,py,9.5,j*0.7);
+    }
+    if(effect>0.35){
+     c.save();
+     c.globalAlpha=Math.min(1,(effect-0.35)/0.55);
+     c.strokeStyle='#ffe294';
+     c.lineWidth=1.6;
+     for(const [x1,y1,x2,y2] of [[-26,36,26,34],[-22,28,24,39],[-18,41,20,27],[-25,31,18,31]]){
+      c.beginPath();
+      c.moveTo(x1,y1);
+      c.quadraticCurveTo(0,y1-5,x2,y2);
+      c.stroke();
+     }
+     c.restore();
+    }
+   }
+  }else if(round===1){
+   const bCount=failed?7:5;
+   for(let j=0;j<bCount;j++){
+    const itemProgress=Math.max(0,Math.min(1,effect*bCount-j));
+    if(itemProgress>=1)continue;
+    const a=j*2.25+t*(failed?0.55:0.28);
+    const dist=(18+j*6.5)*(1-itemProgress*0.85);
+    const bx=Math.cos(a)*dist+(itemProgress>0?(-25*itemProgress):0);
+    const by=Math.sin(a)*(14+j*4.5)*(1-itemProgress*0.85);
+    drawBacterium(c,bx,by,a+Math.PI/2,t*9+j*1.7,1-itemProgress*0.9);
+   }
+  }else if(round===2){
+   const pulse=effect>0?Math.sin(t*7)*2.2*effect:Math.sin(t*2)*0.6;
+   for(let f=-1;f<=1;f++){
+    c.save();
+    c.translate(10,f*27);
+    c.rotate(-0.14);
+    const fiberW=96+pulse*2,fiberH=16;
+    const rCol=Math.round(118+effect*118);
+    const gCol=Math.round(68+effect*34);
+    const bCol=Math.round(92+effect*18);
+    c.fillStyle=`rgb(${rCol},${gCol},${bCol})`;
+    c.strokeStyle=effect>0.4?'#ff9eb0':'#8f5970';
+    c.lineWidth=1.3;
+    c.beginPath();
+    c.roundRect(-fiberW/2,-fiberH/2,fiberW,fiberH,7);
+    c.fill();
+    c.stroke();
+    c.strokeStyle=effect>0.4?'#ffd0d866':'#3d1c2e88';
+    c.lineWidth=2.1;
+    const spacing=7.5-effect*0.6;
+    for(let sx=-fiberW/2+8;sx<fiberW/2-6;sx+=spacing){
+     c.beginPath();
+     c.moveTo(sx,-fiberH/2+1.5);
+     c.lineTo(sx,fiberH/2-1.5);
+     c.stroke();
+    }
+    oval(c,-22,-fiberH/2+2.5,5.5,2.1,'#4d2242');
+    oval(c,18,fiberH/2-2.5,5.5,2.1,'#4d2242');
+    c.restore();
+   }
   }else if(round===3){
-   c.strokeStyle=effect>.7?'#ac8296':'#e6b09a';c.lineWidth=10;c.lineCap='round';c.beginPath();for(let j=-40;j<=40;j++){const dy=Math.sin(j/14+t*(failed?5:3))*11*(1-effect*.8);if(j===-40)c.moveTo(j,dy);else c.lineTo(j,dy)}c.stroke();
-  }else if(round===2){for(let j=0;j<4;j++)oval(c,12+j*5,-20+j*13,33,5,effect>.4?'#fd9980':'#956574',-.25)}
-  else if(round===4){for(let j=0;j<6;j++)oval(c,Math.cos(j)*15,Math.sin(j)*16,8,7,'#d3a359')}
-  else{
-   const count=round===1?(failed?7:4):5;
-   for(let j=0;j<count;j++){if((round===1||round===6)&&j<effect*count)continue;
-    const a=j*2.4+t*.24;const dx=Math.cos(a)*(12+j*5),dy=Math.sin(a)*(12+j*4);
-    oval(c,dx,dy,round===1?9:6,round===1?3.8:6,round===1?'#9cd4ad':round===5?'#a4bddc':'#d29ab4',a);
-    if(round===5&&effect>.3){c.strokeStyle='#ffe18a';c.lineWidth=2;c.beginPath();c.moveTo(dx-11,dy-11);c.lineTo(dx-6,dy-6);c.lineTo(dx-5,dy-12);c.moveTo(dx-6,dy-6);c.lineTo(dx-1,dy-6);c.stroke()}
+   const wriggleSpeed=failed?5.2:3.1;
+   const amp=11.5*(1-effect*0.82);
+   const pts=[];
+   for(let j=-46;j<=46;j+=2){
+    const dy=Math.sin(j/13+t*wriggleSpeed)*amp+Math.cos(j/25-t)*3*(1-effect*0.7);
+    pts.push([j,dy]);
+   }
+   for(let p=0;p<pts.length;p++){
+    const [wx,wy]=pts[p];
+    const norm=Math.abs(wx)/46;
+    const rad=Math.max(2.2,8.5*(1-norm*norm*0.78));
+    const wormColor=effect>0.55?'#9b7a8e':p%3===0?'#d99b86':'#ebb59e';
+    oval(c,wx,wy,rad,rad*0.88,wormColor);
+   }
+   c.strokeStyle=effect>0.55?'#63485a88':'#9c554899';
+   c.lineWidth=2.2;
+   c.beginPath();
+   pts.forEach(([wx,wy],idx)=>{if(idx===0)c.moveTo(wx,wy);else c.lineTo(wx,wy)});
+   c.stroke();
+   if(effect>0.2){
+    for(let k=0;k<10;k++){
+     const idx=Math.min(pts.length-1,4+k*4);
+     const [lx,ly]=pts[idx];
+     oval(c,lx,ly+(k%2?3:-3),3.2*effect,2.4*effect,'#ff6042');
+    }
+   }
+  }else if(round===4){
+   if(effect>0.05){
+    for(let ring=0;ring<3;ring++){
+     const prog=(effect*1.3+ring*0.33)%1;
+     c.strokeStyle=`rgba(255,195,121,${(1-prog)*0.65})`;
+     c.lineWidth=2.2;
+     c.beginPath();
+     c.arc(-10,0,14+prog*64,0,Math.PI*2);
+     c.stroke();
+    }
+   }
+   for(let j=0;j<6;j++){
+    const a=j*Math.PI/3+t*0.35;
+    const rad=j===0?0:24+Math.sin(t*1.5+j)*3;
+    const px=Math.cos(a)*rad+8;
+    const py=Math.sin(a)*rad*0.85;
+    drawPollenGrain(c,px,py,j===0?9.5:8,t*0.4+j);
+   }
+  }else if(round===5){
+   const vCount=5;
+   for(let j=0;j<vCount;j++){
+    const a=j*2*Math.PI/vCount+t*(0.22*(1-effect*0.85));
+    const rx=Math.cos(a)*(22+(j%2)*9)+10;
+    const ry=Math.sin(a)*(18+(j%2)*7);
+    drawVirion(c,rx,ry,t*0.5+j,effect);
+   }
+  }else if(round===6){
+   c.strokeStyle='#6e456255';
+   c.lineWidth=1.4;
+   for(let m=-2;m<=2;m++){
+    c.beginPath();
+    c.moveTo(-45,m*16-8);
+    c.quadraticCurveTo(0,m*16+10,55,m*16-4);
+    c.stroke();
+   }
+   const dCount=7;
+   for(let j=0;j<dCount;j++){
+    const itemProgress=Math.max(0,Math.min(1,effect*dCount-j));
+    if(itemProgress>=1)continue;
+    const a=j*1.9+0.4;
+    const dist=(16+(j%3)*12)*(1-itemProgress*0.88);
+    const dx=Math.cos(a)*dist+8*(1-itemProgress)+(-25*itemProgress);
+    const dy=Math.sin(a)*dist*0.82;
+    drawDebrisShard(c,dx,dy,j,j*1.1+t*0.15,1-itemProgress*0.9);
    }
   }
+
   if(unit!==null){
-   const dx=-290+(right?265:390)*arrival,dy=(round===0?28:0)-15*Math.sin(arrival*Math.PI);
-   cell(c,unit,dx,dy,round===6?19+effect*8:20,-.19);
-   if(effect>0&&[2,3,4].includes(round))for(let j=0;j<16;j++){let f=(t*.9+j/16)%1;oval(c,dx+f*(round===4?85:45),dy+Math.sin(j*1.7)*f*42,2.5,2.5,round===2?'#92ecff':round===4?'#ffc379':'#c9ef9a')}
+   let dx,dy;
+   if(right){
+    dx=-290+265*arrival;
+    dy=(round===0?26:0)-15*Math.sin(arrival*Math.PI);
+   }else{
+    if(arrival<0.72){
+     const p=arrival/0.72;
+     dx=-290+258*p;
+     dy=-16*Math.sin(p*Math.PI);
+    }else{
+     const bounce=(arrival-0.72)/0.28;
+     dx=-32-38*bounce+Math.sin(t*28)*4*(1-bounce*0.5);
+     dy=18*bounce;
+    }
+   }
+
+   if(right&&effect>0&&(round===1||round===6)){
+    const reach=Math.sin(Math.min(1,effect*1.4)*Math.PI)*28;
+    const armColor=palette[unit];
+    c.fillStyle=armColor;
+    c.beginPath();
+    c.moveTo(dx+8,dy-12);
+    c.quadraticCurveTo(dx+22+reach,dy-22,dx+18+reach,dy-4);
+    c.quadraticCurveTo(dx+22+reach,dy+18,dx+8,dy+12);
+    c.closePath();
+    c.fill();
+   }
+
+   const unitRadius=round===6&&right?19+effect*9:20;
+   if(round===6&&right&&effect>0.2){
+    for(let k=0;k<8;k++){
+     const ra=k*Math.PI/4+t*2;
+     oval(c,dx+Math.cos(ra)*(unitRadius-2),dy+Math.sin(ra)*(unitRadius-2),7*effect,5*effect,palette[6],ra);
+    }
+   }
+   cell(c,unit,dx,dy,unitRadius,-.19);
+
+   if(effect>0&&[2,3,4].includes(round)){
+    for(let j=0;j<18;j++){
+     const f=(t*1.05+j/18)%1;
+     const px=dx+14+f*(round===4?82:52);
+     const py=dy+Math.sin(j*1.7+t*2)*f*38;
+     oval(c,px,py,round===3?3.1:2.6,round===3?3.1:2.6,round===2?'#92ecff':round===4?'#ffc379':'#ff6e4a');
+    }
+   }
+
+   if(effect>0&&round===5){
+    c.strokeStyle='#ffe18a';
+    c.lineWidth=1.8;
+    for(let j=0;j<8;j++){
+     const f=(t*0.95+j/8)%1;
+     const ax=dx+16+f*52;
+     const ay=dy+Math.sin(j*2.1)*f*30;
+     c.beginPath();
+     c.moveTo(ax-4,ay);c.lineTo(ax,ay);
+     c.lineTo(ax+3,ay-3);
+     c.moveTo(ax,ay);c.lineTo(ax+3,ay+3);
+     c.stroke();
+    }
+   }
+
+   if(failed){
+    c.strokeStyle='#ff9e7d';
+    c.lineWidth=1.8;
+    c.setLineDash([4,4]);
+    c.beginPath();
+    c.arc(dx,dy,26,0,Math.PI*2);
+    c.stroke();
+    c.setLineDash([]);
+   }
   }
   c.restore();
-  c.strokeStyle=failed?'#ed9779':'#a4d5c5';c.lineWidth=1;
-  for(const [a,b,sx,sy] of [[235,62,1,1],[377,62,-1,1],[235,195,1,-1],[377,195,-1,-1]]){c.beginPath();c.moveTo(a+sx*13,b);c.lineTo(a,b);c.lineTo(a,b+sy*12);c.stroke()}
+
+  c.strokeStyle=failed?'#ed9779':effect>0.8?'#88d8b5':'#a4d5c5';
+  c.lineWidth=1.5;
+  for(const [a,b,sx,sy] of [[228,54,1,1],[384,54,-1,1],[228,198,1,-1],[384,198,-1,-1]]){
+   c.beginPath();
+   c.moveTo(a+sx*14,b);c.lineTo(a,b);c.lineTo(a,b+sy*14);
+   c.stroke();
+  }
   if(!minimal)frame=requestAnimationFrame(draw);
  }
- draw(start)
+ draw(start);
 }
-function captain(canvas){
+
+function captain(canvas,mood='normal'){
  const c=canvas.getContext('2d');
- // Original pixel portrait on the captain's bridge.
- const p=5;function tile(x,y,w,h,color){c.fillStyle=color;c.fillRect(x*p,y*p,w*p,h*p)}
+ c.clearRect(0,0,canvas.width,canvas.height);
+ const p=5;
+ function tile(x,y,w,h,color){c.fillStyle=color;c.fillRect(x*p,y*p,w*p,h*p)}
  const rows=[
- '          gggggggg          ','        ggccccccccgg        ','       gccchhhhhhcccg       ','       gccccyyccccccg       ','      gggggggggggggggg      ','        gggggggggggg        ','        ddssssssssdd        ','       ddslllsslllsdd       ','       ddswdsllsdwsdd       ','        dslllsslllsd        ','         slllsstlls         ','         sslttttlls         ','          slllllls          ','        ccgssllssgcc        ','     ccccccgssssccecccc     ','   cceeecccchhhhcccceecc    ','  cccccccccchyyhccccccccc   ',' cccccccccccchhccccccccccc  ',' cccggccccccchhccccccggccc  '];
- const colors={g:'#102b37',c:'#37868c',h:'#cce7d9',y:'#f1c768',d:'#44353b',s:'#be8065',l:'#edb899',t:'#975e52',w:'#f4e9ce',e:'#e5b565'};
+  '          gggggggg          ',
+  '        ggccccccccgg        ',
+  '       gccchhhhhhcccg       ',
+  '       gccccyyccccccg       ',
+  '      gggggggggggggggg      ',
+  '        gggggggggggg        ',
+  '        ddssssssssdd        ',
+  mood==='warn'||mood==='fired'?'       ddwlllsslllwdd       ':'       ddslllsslllsdd       ',
+  '       ddswdsllsdwsdd       ',
+  '        dslllsslllsd        ',
+  '         slllsstlls         ',
+  mood==='fired'?'         ssltllllts         ':mood==='warn'?'         ssltttttls         ':'         sslttttlls         ',
+  '          slllllls          ',
+  '        ccgssllssgcc        ',
+  '     ccccccgssssccecccc     ',
+  '   cceeecccchhhhcccceecc    ',
+  '  cccccccccchyyhccccccccc   ',
+  ' cccccccccccchhccccccccccc  ',
+  ' cccggccccccchhccccccggccc  '
+ ];
+ const colors={
+  g:mood==='fired'?'#3b1219':mood==='warn'?'#3b2610':'#102b37',
+  c:mood==='fired'?'#8c2d3b':mood==='warn'?'#96622b':'#37868c',
+  h:'#cce7d9',
+  y:'#f1c768',
+  d:'#44353b',
+  s:'#be8065',
+  l:'#edb899',
+  t:'#975e52',
+  w:'#f4e9ce',
+  e:'#e5b565'
+ };
  rows.forEach((row,y)=>[...row].forEach((s,x)=>{if(colors[s])tile(x,y,1,1,colors[s])}));
 }
-function bridge(){
- stopScene();game.innerHTML='<section class="bridge"><div class="portrait"><canvas id="capt" width="140" height="100" aria-label="Pixel-art dispatch captain"></canvas><small>Command deck</small></div><div class="orders"><small>Incoming transmission</small><h2>Captain, take the helm.</h2><p>A cyclist has just scraped a knee. Your crew is on standby. Read the distress call, then send the blood component that can help.</p><button class="next" id="launch">Accept command ▸</button></div></section>';captain(capt);launch.onclick=show;
+
+function evaluateShiftTier(rawScore,total){
+ if(rawScore===0){
+  return {
+   tier:'fired',
+   badge:'0 / '+total+' · Relieved of Command',
+   badgeClass:'rank-fired',
+   headline:'You Are Fired from the Helm!',
+   quote:'"Zero first-try dispatches?! Pack up your pipette and turn in your command badge—you are relieved of duty! Study the Crew Codex before re-applying."',
+   quoteClass:'fired'
+  };
+ }
+ const scaled=total===10?rawScore:Math.round((rawScore/total)*10);
+ if(scaled>=10){
+  return {
+   tier:'gold',
+   badge:'10 / 10 Equivalent · Gold Dispatch Medal',
+   badgeClass:'rank-gold',
+   headline:'Gold Medal · Chief Hematology Commander',
+   quote:'"Flawless command! Every single emergency call was answered on the first dispatch. The Fleet Surgeon awards you the Gold Dispatch Medal!"',
+   quoteClass:''
+  };
+ }
+ if(scaled>=8){
+  return {
+   tier:'silver',
+   badge:rawScore+' / '+total+' · Silver Dispatch Medal',
+   badgeClass:'rank-silver',
+   headline:'Silver Medal · Senior Lab Dispatcher',
+   quote:'"Sharp work on the microscope! Your rapid leukocyte and platelet dispatches kept the patient stable and earned the Silver Dispatch Medal."',
+   quoteClass:''
+  };
+ }
+ if(scaled>=6){
+  return {
+   tier:'bronze',
+   badge:rawScore+' / '+total+' · Bronze Dispatch Medal',
+   badgeClass:'rank-bronze',
+   headline:'Bronze Medal · Qualified Crew Dispatcher',
+   quote:'"Shift passed! You contained the threats and earned the Bronze Dispatch Medal. Drill your missed calls below to reach Silver and Gold."',
+   quoteClass:''
+  };
+ }
+ return {
+  tier:'warn',
+  badge:rawScore+' / '+total+' · Official Command Warning',
+  badgeClass:'rank-warn',
+  headline:'Official Warning from the Captain',
+  quote:'"Captain’s Warning! Too many wrong dispatches left damaged vessels and tissues waiting for backup. You are on shift probation—hit the Crew Codex now!"',
+  quoteClass:'warn'
+ };
 }
-let index=0,score=0,tried=new Set(),done=false;const misses=new Set();
-function show(){busy=false;const [title,brief,options,target,hint,label]=cases[index];game.innerHTML='<div class="case"><div class="brief"><div class="eyebrow">Case '+(index+1)+' / '+cases.length+'</div><h2>'+title+'</h2><p>'+brief+'</p></div><div class="scope"><canvas id="field" width="500" height="270" aria-hidden="true"></canvas><small id="caption"></small></div></div><div class="line"><h3>Dispatch a component</h3><span class="score">Score <b id="points">'+score+'</b> / 7</span></div><div class="choices"></div><div id="feedback" aria-live="polite"></div>';caption.textContent=label;paintScene(field,index);for(const id of options){const btn=document.createElement('button');btn.className='choice';btn.innerHTML='<canvas aria-hidden="true" width="96" height="96"></canvas><span>'+cells[id][0]+'</span>';cell(btn.firstChild.getContext('2d'),id,48,48,35,-.2);btn.onclick=()=>choose(id,btn);game.querySelector('.choices').append(btn)}}
-function choose(id,btn){if(done||busy||tried.has(id))return;busy=true;tried.add(id);const target=cases[index][3];const right=id===target;paintScene(field,index,id,right);game.querySelectorAll('.choice').forEach(b=>b.disabled=true);caption.textContent='Dispatching '+cells[id][0]+'…';feedback.innerHTML='<div class="feed">Crew en route…</div>';
-timer=setTimeout(()=>{
+
+function paintRewardScene(canvas,tier){
+ stopScene();
+ const c=canvas.getContext('2d'),start=performance.now();
+ const offCapt=document.createElement('canvas');
+ offCapt.width=140;offCapt.height=100;
+ captain(offCapt,tier==='fired'?'fired':tier==='warn'?'warn':'normal');
+
+ function drawStar(cx,cy,spikes,outerR,innerR,color,rot=0){
+  c.save();
+  c.translate(cx,cy);
+  c.rotate(rot);
+  c.fillStyle=color;
+  c.beginPath();
+  for(let i=0;i<spikes*2;i++){
+   const r=i%2===0?outerR:innerR;
+   const a=i*Math.PI/spikes-Math.PI/2;
+   if(i===0)c.moveTo(Math.cos(a)*r,Math.sin(a)*r);
+   else c.lineTo(Math.cos(a)*r,Math.sin(a)*r);
+  }
+  c.closePath();
+  c.fill();
+  c.restore();
+ }
+
+ function draw(now){
+  const t=minimal?2:(now-start)/1000;
+  c.clearRect(0,0,440,260);
+
+  if(tier==='gold'||tier==='silver'||tier==='bronze'){
+   const bg=c.createRadialGradient(220,130,15,220,130,210);
+   if(tier==='gold'){
+    bg.addColorStop(0,'#4f3b16');bg.addColorStop(.55,'#23333d');bg.addColorStop(1,'#111e25');
+   }else if(tier==='silver'){
+    bg.addColorStop(0,'#344b57');bg.addColorStop(.55,'#1e313b');bg.addColorStop(1,'#111e25');
+   }else{
+    bg.addColorStop(0,'#472c1e');bg.addColorStop(.55,'#232f38');bg.addColorStop(1,'#111e25');
+   }
+   c.fillStyle=bg;
+   c.fillRect(0,0,440,260);
+
+   // Rotating celebratory light rays
+   c.save();
+   c.translate(220,132);
+   c.rotate(t*0.35);
+   const rayCount=tier==='gold'?16:12;
+   c.fillStyle=tier==='gold'?'#ffd86b1a':tier==='silver'?'#cfe8f516':'#f4a87815';
+   for(let i=0;i<rayCount;i++){
+    c.beginPath();
+    const a=i*Math.PI*2/rayCount;
+    c.moveTo(0,0);
+    c.arc(0,0,210,a,a+Math.PI/rayCount*0.55);
+    c.closePath();
+    c.fill();
+   }
+   c.restore();
+
+   // Orbiting honor-guard blood cells
+   const orbitCells=tier==='gold'?7:tier==='silver'?5:3;
+   for(let i=0;i<orbitCells;i++){
+    const a=t*0.75+i*(Math.PI*2/orbitCells);
+    const ox=220+Math.cos(a)*138;
+    const oy=132+Math.sin(a)*82;
+    cell(c,i%7,ox,oy,15,Math.sin(t+i)*0.25);
+   }
+
+   // Neck ribbon V-straps
+   c.lineWidth=18;
+   c.lineCap='butt';
+   c.strokeStyle=tier==='gold'?'#b82946':tier==='silver'?'#2b6e82':'#38725b';
+   c.beginPath();
+   c.moveTo(165,16);c.lineTo(212,115);
+   c.moveTo(275,16);c.lineTo(228,115);
+   c.stroke();
+   c.lineWidth=5;
+   c.strokeStyle=tier==='gold'?'#ffe382':tier==='silver'?'#d9f0ff':'#f5c396';
+   c.beginPath();
+   c.moveTo(165,16);c.lineTo(212,115);
+   c.moveTo(275,16);c.lineTo(228,115);
+   c.stroke();
+
+   // Medal clasp
+   c.fillStyle=tier==='gold'?'#f5c542':tier==='silver'?'#c8d8e0':'#d48755';
+   c.fillRect(198,92,44,10);
+
+   // Medallion disc with gentle bob
+   const my=142+Math.sin(t*2.4)*3.5;
+   const outerColor=tier==='gold'?'#e5a922':tier==='silver'?'#9fb3bf':'#b56738';
+   const innerColor=tier==='gold'?'#ffd866':tier==='silver'?'#e3eef5':'#e69d6c';
+   const rimHighlight=tier==='gold'?'#fff3b8':tier==='silver'?'#ffffff':'#ffd4b3';
+
+   // Scalloped outer rosette for Gold
+   if(tier==='gold'){
+    drawStar(220,my,16,58,51,'#c98c12',t*0.2);
+   }
+   oval(c,220,my,52,52,outerColor);
+   oval(c,220,my,43,43,innerColor);
+   c.strokeStyle=rimHighlight;
+   c.lineWidth=2.2;
+   c.beginPath();
+   c.arc(220,my,43,0,Math.PI*2);
+   c.stroke();
+
+   // Central star & medical cross emblem on medal
+   drawStar(220,my,5,24,11,outerColor,Math.sin(t)*0.1);
+   drawStar(220,my,5,19,8.5,rimHighlight,Math.sin(t)*0.1);
+
+   // Shimmering sparkles
+   const spCount=tier==='gold'?14:8;
+   for(let s=0;s<spCount;s++){
+    const sa=s*2.1+t*0.6;
+    const sr=62+(s%4)*22;
+    const sx=220+Math.cos(sa)*sr*1.2;
+    const sy=my+Math.sin(sa)*sr*0.75;
+    const pulse=Math.max(0,Math.sin(t*4+s*1.3))*4.5;
+    if(pulse>0.5)drawStar(sx,sy,4,pulse,pulse*0.35,rimHighlight);
+   }
+  }else if(tier==='warn'){
+   // Amber probation bridge scene
+   const pulse=0.5+0.5*Math.sin(t*6);
+   const bg=c.createLinearGradient(0,0,0,260);
+   bg.addColorStop(0,'#2b1d12');
+   bg.addColorStop(1,'#171c21');
+   c.fillStyle=bg;
+   c.fillRect(0,0,440,260);
+
+   // Hazard stripes at top & bottom
+   c.fillStyle='#f0983e33';
+   for(let x=-20;x<460;x+=28){
+    c.beginPath();
+    c.moveTo(x,0);c.lineTo(x+14,0);c.lineTo(x+4,12);c.lineTo(x-10,12);c.closePath();c.fill();
+    c.beginPath();
+    c.moveTo(x,248);c.lineTo(x+14,248);c.lineTo(x+4,260);c.lineTo(x-10,260);c.closePath();c.fill();
+   }
+
+   // Flashing amber beacon lights
+   oval(c,55,42,16+pulse*6,16+pulse*6,`rgba(245,166,35,${0.25+pulse*0.35})`);
+   oval(c,385,42,16+pulse*6,16+pulse*6,`rgba(245,166,35,${0.25+pulse*0.35})`);
+   oval(c,55,42,7,7,'#ffc86b');
+   oval(c,385,42,7,7,'#ffc86b');
+
+   // Stern Captain portrait on bridge monitor
+   c.fillStyle='#1f2c33';
+   c.strokeStyle='#f0983e';
+   c.lineWidth=2.5;
+   c.beginPath();
+   c.roundRect(136,26,168,128,12);
+   c.fill();
+   c.stroke();
+   c.imageSmoothingEnabled=false;
+   c.drawImage(offCapt,150,36,140,100);
+
+   // Warning stamp banner
+   c.save();
+   c.translate(220,198);
+   c.rotate(-0.04);
+   c.fillStyle='#3b2210f0';
+   c.strokeStyle='#ffb347';
+   c.lineWidth=2.5;
+   c.beginPath();
+   c.roundRect(-142,-24,284,48,8);
+   c.fill();
+   c.stroke();
+   c.fillStyle='#ffd285';
+   c.font='bold 16px ui-monospace,monospace';
+   c.textAlign='center';
+   c.fillText('⚠ CAPTAIN’S WARNING ISSUED',0,-2);
+   c.font='bold 11px ui-monospace,monospace';
+   c.fillStyle='#f5b873';
+   c.fillText('PROBATIONARY STATUS · REVIEW CODEX',0,15);
+   c.restore();
+  }else{
+   // 0/10 FIRED emergency scene
+   const alarm=0.5+0.5*Math.sin(t*9);
+   const bg=c.createLinearGradient(0,0,0,260);
+   bg.addColorStop(0,`rgb(${52+Math.round(alarm*35)},16,24)`);
+   bg.addColorStop(1,'#181016');
+   c.fillStyle=bg;
+   c.fillRect(0,0,440,260);
+
+   // Red emergency klaxons
+   oval(c,52,40,20+alarm*8,20+alarm*8,`rgba(235,90,104,${0.3+alarm*0.4})`);
+   oval(c,388,40,20+alarm*8,20+alarm*8,`rgba(235,90,104,${0.3+alarm*0.4})`);
+   oval(c,52,40,8,8,'#ff6b7b');
+   oval(c,388,40,8,8,'#ff6b7b');
+
+   // Captain shaking head in disappointment
+   const shake=Math.sin(t*10)*4;
+   c.fillStyle='#261419';
+   c.strokeStyle='#eb5a68';
+   c.lineWidth=2.5;
+   c.beginPath();
+   c.roundRect(136,24,168,126,12);
+   c.fill();
+   c.stroke();
+   c.imageSmoothingEnabled=false;
+   c.drawImage(offCapt,150+shake,34,140,100);
+
+   // Stamped "FIRED / RELIEVED OF COMMAND" notice
+   const slam=Math.min(1,t/0.35);
+   const scale=1+(1-slam)*0.6;
+   c.save();
+   c.translate(220,196);
+   c.scale(scale,scale);
+   c.rotate(-0.07);
+   c.fillStyle='#4a121cf2';
+   c.strokeStyle='#ff6b7b';
+   c.lineWidth=3;
+   c.beginPath();
+   c.roundRect(-148,-26,296,52,8);
+   c.fill();
+   c.stroke();
+   c.fillStyle='#ff9da8';
+   c.font='bold 18px ui-monospace,monospace';
+   c.textAlign='center';
+   c.fillText('✖ RELIEVED OF COMMAND — FIRED',0,-2);
+   c.font='bold 11px ui-monospace,monospace';
+   c.fillStyle='#ffc2c9';
+   c.fillText('0 FIRST-TRY DISPATCHES · BADGE REVOKED',0,16);
+   c.restore();
+  }
+
+  if(!minimal)frame=requestAnimationFrame(draw);
+ }
+ draw(start);
+}
+
+const shiftSize=10;
+let cases=[];
+let missedHistory=[];
+const sceneForCell=[0,2,1,3,4,5,6];
+
+function cloneCase(m){
+ return m[5]?[m[0],m[1],m[2],m[3],m[4],m[5].map(s=>s.slice())]:m.slice();
+}
+
+function shuffle(items){
+ const result=items.slice();
+ for(let end=result.length-1;end>0;end--){
+  const pick=Math.floor(Math.random()*(end+1));
+  [result[end],result[pick]]=[result[pick],result[end]];
+ }
+ return result;
+}
+
+function drawShift(previous,mode='standard'){
+ if(mode==='missed'&&missedHistory.length){
+  return missedHistory.map(cloneCase);
+ }
+ if(mode==='cascade'){
+  return shuffle(cascadeBank).map(cloneCase);
+ }
+ const missedTitles=new Set(missedHistory.map(m=>m[0]));
+ const prevTitles=new Set(previous.map(m=>m[0]));
+ const available=caseBank.filter(mission=>!prevTitles.has(mission[0])||missedTitles.has(mission[0]));
+ const pools=cells.map((cellItem,id)=>{
+  const cellPool=available.filter(mission=>mission[2]===id);
+  return shuffle(cellPool.length?cellPool:caseBank.filter(mission=>mission[2]===id));
+ });
+ const chosen=pools.map(pool=>pool.pop());
+ const bonusPools=shuffle(pools).slice(0,shiftSize-1-chosen.length);
+ const nine=shuffle(chosen.concat(bonusPools.map(pool=>pool.pop()))).map(cloneCase);
+ const boss=cloneCase(shuffle(cascadeBank)[0]);
+ return nine.concat([boss]);
+}
+
+let index=0,stageIndex=0,score=0,tried=new Set(),done=false,activeSelect=null,activeDeliver=null;
+const misses=new Set();
+
+function startShift(mode='standard'){
+ cases=drawShift(cases,mode);
+ index=0;
+ stageIndex=0;
+ score=0;
+ tried.clear();
+ misses.clear();
+ done=false;
+ show();
+}
+
+function bridge(){
+ stopScene();
+ activeSelect=null;
+ activeDeliver=null;
+ game.innerHTML='<section class="bridge"><div class="portrait"><canvas id="capt" width="140" height="100" aria-label="Pixel-art dispatch captain"></canvas><small>Command deck · Main menu</small></div><div class="orders"><small>Incoming transmission</small><h2>Captain, take the helm.</h2><p>Your shift has nine standard dispatches plus a final 3-stage physiological cascade drawn from a bank of 31 calls. Earn <b>10/10 for Gold</b>, <b>8+/10 for Silver</b>, or <b>6+/10 for Bronze</b>—score under 6 for a Captain’s Warning, or 0/10 and you’re fired!</p><div class="btn-row"><button class="next" id="launch" type="button">Accept command (10-case shift) ▸</button><button class="next secondary" id="launchCascade" type="button">Cascade drill (3 multi-stage calls)</button>'+(missedHistory.length?'<button class="next secondary" id="bridgeRetry" type="button">Retry last missed ('+missedHistory.length+')</button>':'')+'</div></div></section>';
+ captain(document.getElementById('capt'),'normal');
+ document.getElementById('launch').onclick=()=>startShift('standard');
+ document.getElementById('launchCascade').onclick=()=>startShift('cascade');
+ const brRetry=document.getElementById('bridgeRetry');
+ if(brRetry)brRetry.onclick=()=>startShift('missed');
+}
+
+function currentMissionData(){
+ const mission=cases[index];
+ if(mission[5]){
+  const st=mission[5][stageIndex];
+  return {title:mission[0],brief:st[0],target:st[1],hint:st[2],label:st[3],isCascade:true,totalStages:mission[5].length};
+ }
+ return {title:mission[0],brief:mission[1],target:mission[2],hint:mission[3],label:mission[4],isCascade:false,totalStages:1};
+}
+
+function unitDisplayName(id,revealed=false){
+ if(!blindMode||revealed||tried.has(id))return cells[id][0];
+ return 'Specimen #'+(id+1);
+}
+
+function refreshCrewLabels(){
+ game.querySelectorAll('.choice').forEach(btn=>{
+  const id=Number(btn.dataset.unit);
+  const labelSpan=btn.querySelector('.unit-name');
+  if(!labelSpan)return;
+  const revealed=!blindMode||done||tried.has(id);
+  labelSpan.textContent=unitDisplayName(id,revealed);
+  labelSpan.classList.toggle('blind-label',!revealed);
+  btn.setAttribute('aria-label',revealed?cells[id][0]:'Specimen '+(id+1)+': '+cells[id][4]);
+ });
+}
+
+function show(){
  busy=false;
- if(right){done=true;if(tried.size===1)score++;points.textContent=score;btn.classList.add('correct')}
- else{misses.add(index);[...game.querySelectorAll('.choice')].forEach((b,j)=>b.disabled=tried.has(cases[index][2][j]))}
- caption.textContent=right?outcomes[index][0]:'Backup requested';
- feedback.innerHTML='<div class="feed '+(right?'win':'loss')+'"><small>'+(right?'✦ Mission complete':'⚠ Dispatch missed')+'</small><h3>'+(right?outcomes[index][0]:'Backup requested')+'</h3><p>'+(right?outcomes[index][1]:outcomes[index][2]+' '+cells[id][1]+' '+cases[index][4])+'</p><span class="refs">Reed, slide '+cells[id][2]+' · Marieb &amp; Keller, § '+(id===0?'10.2a':'10.1d')+'</span></div>';
- if(right){const b=document.createElement('button');b.className='next';b.textContent=index===6?'See results →':'Next case →';feedback.append(b);b.onclick=()=>{if(index===6)finish();else{index++;tried.clear();done=false;show();game.querySelector('.choice').focus()}};b.focus()}else{game.querySelector('.choice:not(:disabled)')?.focus()}},minimal?0:1600)}
-function finish(){stopScene();game.innerHTML='<div class="brief"><div class="eyebrow">Shift complete</div><h2>'+score+' of 7 on the first try</h2><p>You dispatched the right component in all seven cases.</p>'+(misses.size?'<h3>Cases to revisit</h3><ul>'+[...misses].map(i=>'<li>'+cases[i][0]+' — '+cells[cases[i][3]][0]+'</li>').join('')+'</ul>':'')+'<button class="next" id="again">Play again</button></div>';again.onclick=()=>{index=score=0;tried.clear();misses.clear();done=false;bridge()};again.focus()}
-function modal(html){detail.innerHTML=html;info.showModal()}
-rules.onclick=()=>modal('<h2>How to play</h2><p>Read the case and select one of three components. A correct first dispatch earns one point. If a dispatch misses, use the clue and try again. Complete seven cases to see your score and review list.</p>');
-sources.onclick=()=>modal('<h2>References</h2><p>Marieb, E. N., &amp; Keller, S. M. (2022). <i>Essentials of human anatomy &amp; physiology</i> (13th ed.). Pearson. Chapter 10, sections 10.1d and 10.2a.</p><p>Reed, B. (2025). <i>Chapter 10: Blood</i> [Lecture slides]. Tulsa Community College. Slides 8, 10, 16–20, and 22–23.</p>');
-const standalone='<!doctype html>'+document.documentElement.outerHTML;
-download.onclick=()=>{const url=URL.createObjectURL(new Blob([standalone],{type:'text/html'}));const a=document.createElement('a');a.href=url;a.download='Blood-Cell-Dispatch.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+ const {title,brief,target,label,isCascade,totalStages}=currentMissionData();
+ game.innerHTML='<div class="case"><div class="brief"><div class="toolbar" style="margin-bottom:6px"><div class="eyebrow">Mission '+(index+1)+' / '+cases.length+'</div><button type="button" id="abortMenu" class="pill-toggle" title="Exit current shift and return to the Command Deck main menu">← Main menu</button></div>'+(isCascade?'<div class="stage-track">⚡ Multi-stage cascade · Stage '+(stageIndex+1)+' of '+totalStages+'</div>':'')+'<h2>'+title+'</h2><p>'+brief+'</p></div><button type="button" class="scope landing" id="landing" aria-label="Dispatch selected component to '+label+'"><canvas id="field" width="500" height="270" aria-hidden="true"></canvas><small id="caption"></small><span id="dropLabel">Drop crew here ↓</span></button></div><div class="line"><h3>Crew board</h3><span class="score">First-try score <b id="points">'+score+'</b> / '+cases.length+'</span></div><p class="instruction">Drag a component into the scene, tap it and tap the scene, or press keys <b>1–7</b> then <b>Enter</b>.</p><div class="crew"></div><div id="feedback" aria-live="polite"></div>';
+ document.getElementById('abortMenu').onclick=()=>bridge();
+ const captionEl=document.getElementById('caption');
+ const fieldEl=document.getElementById('field');
+ const dropLabelEl=document.getElementById('dropLabel');
+ const zone=document.getElementById('landing');
+ captionEl.textContent=label;
+ paintScene(fieldEl,sceneForCell[target]);
+ let selected=null;
+ function select(btn){
+  game.querySelectorAll('.choice').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));
+  selected=btn;
+  if(btn){
+   const uid=Number(btn.dataset.unit);
+   dropLabelEl.textContent='Send '+unitDisplayName(uid)+' here ↵';
+   sfx('select');
+  }else{
+   dropLabelEl.textContent='Drop crew here ↓';
+  }
+ }
+ function deliver(btn){
+  if(!btn||btn.disabled||busy||done)return;
+  select(null);
+  choose(Number(btn.dataset.unit),btn);
+ }
+ activeSelect=id=>{
+  const btn=game.querySelector('.choice[data-unit="'+id+'"]');
+  if(btn&&!btn.disabled&&!busy&&!done){
+   select(selected===btn?null:btn);
+   btn.focus();
+  }
+ };
+ activeDeliver=()=>{
+  if(selected&&!busy&&!done){
+   deliver(selected);
+   return true;
+  }
+  return false;
+ };
+ zone.onclick=()=>{
+  if(selected)deliver(selected);
+  else if(!busy&&!done)game.querySelector('.choice:not(:disabled)')?.focus();
+ };
+ cells.forEach(([name],id)=>{
+  const btn=document.createElement('button');
+  btn.type='button';
+  btn.className='choice';
+  btn.dataset.unit=id;
+  btn.setAttribute('aria-pressed','false');
+  btn.innerHTML='<span class="key-hint">'+(id+1)+'</span><canvas aria-hidden="true" width="96" height="96"></canvas><span class="unit-name"></span>';
+  cell(btn.querySelector('canvas').getContext('2d'),id,48,48,35,-.2);
+  game.querySelector('.crew').append(btn);
+  let origin=null,ghost=null,suppressClick=false;
+  btn.onclick=()=>{if(!suppressClick)select(selected===btn?null:btn)};
+  btn.onpointerdown=e=>{
+   if(!e.isPrimary||e.button!==0||btn.disabled||busy||done)return;
+   origin={x:e.clientX,y:e.clientY};
+   suppressClick=false;
+   btn.setPointerCapture(e.pointerId);
+  };
+  function overScene(e){
+   const r=zone.getBoundingClientRect();
+   return e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom;
+  }
+  btn.onpointermove=e=>{
+   if(!origin||!e.isPrimary)return;
+   if(!ghost&&Math.hypot(e.clientX-origin.x,e.clientY-origin.y)<5)return;
+   if(!ghost){
+    clearGhost();
+    ghost=document.createElement('canvas');
+    ghost.width=ghost.height=96;
+    ghost.className='dragged';
+    ghost.setAttribute('aria-hidden','true');
+    cell(ghost.getContext('2d'),id,48,48,36,-.2);
+    document.body.append(ghost);
+    select(btn);
+   }
+   ghost.style.left=e.clientX+'px';
+   ghost.style.top=e.clientY+'px';
+   zone.classList.toggle('over',overScene(e));
+  };
+  function end(e,accept){
+   if(!origin||!e.isPrimary)return;
+   origin=null;
+   if(!ghost)return;
+   suppressClick=true;
+   ghost.remove();
+   ghost=null;
+   zone.classList.remove('over');
+   if(accept&&overScene(e))deliver(btn);else select(null);
+   setTimeout(()=>{suppressClick=false},0);
+  }
+  btn.onpointerup=e=>end(e,true);
+  btn.onpointercancel=btn.onlostpointercapture=e=>end(e,false);
+ });
+ refreshCrewLabels();
+}
+
+function choose(id,btn){
+ if(done||busy||tried.has(id))return;
+ busy=true;
+ tried.add(id);
+ sfx('dispatch');
+ const {target,hint,isCascade,totalStages}=currentMissionData();
+ const right=id===target;
+ const fieldEl=document.getElementById('field');
+ const captionEl=document.getElementById('caption');
+ const feedbackEl=document.getElementById('feedback');
+ const pointsEl=document.getElementById('points');
+ paintScene(fieldEl,sceneForCell[target],id,right);
+ game.querySelectorAll('.choice').forEach(b=>b.disabled=true);
+ refreshCrewLabels();
+ captionEl.textContent='Dispatching '+cells[id][0]+'…';
+ feedbackEl.innerHTML='<div class="feed">Crew en route…</div>';
+ timer=setTimeout(()=>{
+  busy=false;
+  if(right){
+   sfx('win');
+   const finalStage=!isCascade||stageIndex===totalStages-1;
+   if(finalStage){
+    done=true;
+    if(!misses.has(index)&&tried.size===1){
+     score++;
+     pointsEl.textContent=score;
+    }
+   }
+   btn.classList.add('correct');
+   refreshCrewLabels();
+  }else{
+   sfx('loss');
+   misses.add(index);
+   [...game.querySelectorAll('.choice')].forEach(b=>{
+    b.disabled=tried.has(Number(b.dataset.unit));
+   });
+   refreshCrewLabels();
+  }
+  captionEl.textContent=right?outcomes[sceneForCell[target]][0]:'Backup requested';
+  feedbackEl.innerHTML='<div class="feed '+(right?'win':'loss')+'"><small>'+(right?(isCascade&&stageIndex<totalStages-1?'✦ Stage '+(stageIndex+1)+' complete':'✦ Mission complete'):'⚠ Dispatch missed')+'</small><h3>'+(right?outcomes[sceneForCell[target]][0]+' ('+cells[id][0]+')':'Backup requested — '+cells[id][0]+' sent')+'</h3><p>'+(right?outcomes[sceneForCell[target]][1]:outcomes[sceneForCell[target]][2]+' '+cells[id][1]+' '+hint)+'</p><span class="refs">Reed, slide '+cells[id][2]+' · Marieb &amp; Keller, § '+(id===0?'10.2a':'10.1d')+'</span></div>';
+  if(right){
+   const b=document.createElement('button');
+   b.type='button';
+   b.className='next';
+   const moreStages=isCascade&&stageIndex<totalStages-1;
+   b.textContent=moreStages?'Next stage ('+(stageIndex+2)+'/'+totalStages+') →':index===cases.length-1?'See shift evaluation →':'Next case →';
+   feedbackEl.append(b);
+   b.onclick=()=>{
+    if(moreStages){
+     stageIndex++;
+     tried.clear();
+     done=false;
+     show();
+     game.querySelector('.choice')?.focus();
+    }else if(index===cases.length-1){
+     finish();
+    }else{
+     index++;
+     stageIndex=0;
+     tried.clear();
+     done=false;
+     show();
+     game.querySelector('.choice')?.focus();
+    }
+   };
+   b.focus();
+  }else{
+   game.querySelector('.choice:not(:disabled)')?.focus();
+  }
+ },minimal?0:1550);
+}
+
+function finish(){
+ stopScene();
+ activeSelect=null;
+ activeDeliver=null;
+ missedHistory=[...misses].map(i=>cloneCase(cases[i]));
+ const outcome=evaluateShiftTier(score,cases.length);
+ sfx(outcome.tier);
+
+ const revisitHtml=misses.size
+  ?'<div class="revisit-panel"><h3>Cases to revisit ('+misses.size+')</h3><ul class="revisit-list">'+[...misses].map(i=>{
+    const m=cases[i];
+    if(m[5]){
+     const chain=m[5].map(st=>cells[st[1]][0]).join(' → ');
+     return '<li class="revisit-item"><b>'+m[0]+'</b> — Required sequence: <b>'+chain+'</b><span class="refs">Multi-stage hemostasis, innate defense, and tissue resolution cascade</span></li>';
+    }
+    const cid=m[2];
+    return '<li class="revisit-item"><b>'+m[0]+'</b> — Dispatch <b>'+cells[cid][0]+'</b>: '+cells[cid][1]+'<span class="refs">Morphology cue: '+cells[cid][4]+' · Reed, slide '+cells[cid][2]+' · Marieb &amp; Keller, § '+(cid===0?'10.2a':'10.1d')+'</span></li>';
+   }).join('')+'</ul></div>'
+  :'';
+
+ game.innerHTML='<div class="case finish-card"><div class="brief"><div class="eyebrow">Shift evaluation · '+score+' of '+cases.length+' on the first try</div><h2>'+outcome.headline+'</h2><div class="boss-quote '+outcome.quoteClass+'">'+outcome.quote+'</div><p>Reward tiers: <b>10/10 Gold</b> · <b>8/10 Silver</b> · <b>6/10 Bronze</b> · <b>&lt;6 Warning</b> · <b>0/10 Fired</b></p><div class="btn-row"><button class="next" id="again" type="button">New 10-case shift ▸</button>'+(missedHistory.length?'<button class="next secondary" id="retryMisses" type="button">Retry missed cases ('+missedHistory.length+')</button>':'')+'<button class="next secondary" id="playCascades" type="button">Cascade drill (3)</button><button class="next ghost-btn" id="mainMenuBtn" type="button">← Back to main menu</button></div></div><div class="reward-stage"><canvas id="rewardCanvas" width="440" height="260" aria-label="'+outcome.headline+'"></canvas><span class="reward-rank '+outcome.badgeClass+'">'+outcome.badge+'</span></div></div>'+revisitHtml;
+
+ paintRewardScene(document.getElementById('rewardCanvas'),outcome.tier);
+
+ const againBtn=document.getElementById('again');
+ againBtn.onclick=()=>startShift('standard');
+ const retryBtn=document.getElementById('retryMisses');
+ if(retryBtn)retryBtn.onclick=()=>startShift('missed');
+ document.getElementById('playCascades').onclick=()=>startShift('cascade');
+ document.getElementById('mainMenuBtn').onclick=()=>bridge();
+ againBtn.focus();
+}
+
+function modal(html){
+ clearGhost();
+ detail.innerHTML=html;
+ info.showModal();
+}
+
+function openCodex(){
+ modal('<h2>Crew Codex &amp; Differential WBC Count</h2><div class="mnemonic-box"><b>WBC Abundance Mnemonic — "Never Let Monkeys Eat Bananas":</b><br>Neutrophils (50–70%) → Lymphocytes (25–45%) → Monocytes (3–8%) → Eosinophils (2–4%) → Basophils (&lt;1%)</div><div class="codex-grid" id="codexGrid"></div>');
+ const grid=document.getElementById('codexGrid');
+ cells.forEach(([name,role,slide,abundance,morph],id)=>{
+  const card=document.createElement('div');
+  card.className='codex-card';
+  card.innerHTML='<canvas width="88" height="88" aria-hidden="true"></canvas><div class="codex-meta"><b>'+name+'</b><span class="codex-badge">'+abundance+'</span><div>'+morph+'</div><div style="margin-top:4px">'+role+'</div><span class="refs">Reed, slide '+slide+' · Marieb &amp; Keller, § '+(id===0?'10.2a':'10.1d')+'</span></div>';
+  cell(card.querySelector('canvas').getContext('2d'),id,44,44,32,-.2);
+  grid.append(card);
+ });
+}
+
+document.getElementById('homeBrand').onclick=()=>bridge();
+document.getElementById('closeModal').onclick=()=>info.close();
+document.getElementById('codex').onclick=openCodex;
+
+document.getElementById('rules').onclick=()=>modal('<h2>How to play</h2><p>Drag any of the seven blood components from the crew board onto the microscope scene, or tap a component and then tap the scene. On a keyboard, press number keys <b>1–7</b> to select a crew unit and <b>Enter</b> or <b>Space</b> to dispatch it.</p><p><b>Shift Evaluation &amp; Medals:</b> A correct first-try dispatch on every stage of a mission earns 1 point. At the end of a 10-case shift: <b>10/10</b> earns the <b>Gold Medal</b>, <b>8–9/10</b> earns the <b>Silver Medal</b>, <b>6–7/10</b> earns the <b>Bronze Medal</b>, <b>1–5/10</b> triggers an <b>Official Captain’s Warning</b>, and <b>0/10</b> gets you <b>Fired</b>!</p><p><b>Lab Practical Mode:</b> Toggle <i>Lab practical: On</i> in the top bar to hide cell names on the crew board and test your visual identification of nuclei and granules.</p>');
+
+document.getElementById('sources').onclick=()=>modal('<h2>References</h2><p>Marieb, E. N., &amp; Keller, S. M. (2022). <i>Essentials of human anatomy &amp; physiology</i> (13th ed.). Pearson. Chapter 10, sections 10.1d and 10.2a.</p><p>Reed, B. (2025). <i>Chapter 10: Blood</i> [Lecture slides]. Tulsa Community College. Slides 8, 10, 16–20, and 22–23.</p>');
+
+const blindBtn=document.getElementById('blindBtn');
+blindBtn.onclick=()=>{
+ blindMode=!blindMode;
+ blindBtn.setAttribute('aria-pressed',String(blindMode));
+ blindBtn.textContent='Lab practical: '+(blindMode?'On':'Off');
+ refreshCrewLabels();
+};
+
+const soundBtn=document.getElementById('soundBtn');
+soundBtn.onclick=()=>{
+ soundOn=!soundOn;
+ soundBtn.setAttribute('aria-pressed',String(soundOn));
+ soundBtn.textContent='Sound: '+(soundOn?'On':'Off');
+ if(soundOn)sfx('select');
+};
+
+const themeBtn=document.getElementById('themeBtn');
+themeBtn.onclick=()=>{
+ const isLight=document.body.classList.toggle('light');
+ themeBtn.setAttribute('aria-pressed',String(isLight));
+ themeBtn.textContent=isLight?'Command deck':'Brightfield';
+};
+
+window.addEventListener('keydown',e=>{
+ if(info.open||e.altKey||e.ctrlKey||e.metaKey)return;
+ if(e.key>='1'&&e.key<='7'&&activeSelect){
+  e.preventDefault();
+  activeSelect(Number(e.key)-1);
+ }else if((e.key==='Enter'||e.key===' ')&&document.activeElement?.tagName!=='BUTTON'){
+  if(activeDeliver&&activeDeliver()){
+   e.preventDefault();
+  }
+ }
+});
+
+const standaloneTemplate='<!doctype html>'+document.documentElement.outerHTML;
+document.getElementById('download').onclick=()=>{
+ const url=URL.createObjectURL(new Blob([standaloneTemplate],{type:'text/html'}));
+ const a=document.createElement('a');
+ a.href=url;
+ a.download='Blood-Cell-Dispatch.html';
+ a.click();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
+
 bridge();
 </script></body></html>
